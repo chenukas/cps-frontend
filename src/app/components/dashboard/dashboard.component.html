@@ -42,7 +42,7 @@
           data-toggle="dropdown"
           class="nav-link dropdown-toggle user-action"
           ><img src="assets/images/user.jpg" class="avatar" alt="Avatar" />
-          {{ userDetails.fullName }} <b class="caret"></b
+          {{ userDetails.fullName }}<b class="caret"></b
         ></a>
         <div class="dropdown-menu">
           <a href="#" class="dropdown-item"
@@ -76,26 +76,23 @@
 
   <ul class="list-unstyled components">
     <li>
-      <a [routerLink]="">Overview</a>
+      <a [routerLink]="['overview']">Overview</a>
     </li>
     <mat-divider></mat-divider>
-    <li>
+    <li *ngIf="userDetails.userType == 0">
       <a
-        href="#stdSubmenu"
+        href="#profSubmenu"
         data-toggle="collapse"
         aria-expanded="false"
         class="dropdown-toggle"
-        >Students</a
+        >Profiles</a
       >
-      <ul class="collapse list-unstyled" id="stdSubmenu">
+      <ul class="collapse list-unstyled" id="profSubmenu">
         <li>
-          <a [routerLink]="">Enroll</a>
+          <a [routerLink]="['profiles/create']">Create</a>
         </li>
         <li>
-          <a [routerLink]="">Update / Unenroll</a>
-        </li>
-        <li>
-          <a [routerLink]="">Student Archives</a>
+          <a [routerLink]="['profiles/manage']">Manage</a>
         </li>
       </ul>
     </li>
