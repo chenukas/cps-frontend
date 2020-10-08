@@ -1,1 +1,152 @@
-<p>dashboard works!</p>
+<nav class="navbar navbar-expand-xl navbar-light bg-light">
+  <a href="#" class="navbar-brand"
+    ><i class="fa fa-cube"></i>Brand<b>Name</b></a
+  >
+  <button
+    type="button"
+    class="navbar-toggler"
+    data-toggle="collapse"
+    data-target="#navbarCollapse"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Collection of nav links, forms, and other content for toggling -->
+  <div
+    id="navbarCollapse"
+    class="collapse navbar-collapse justify-content-start"
+  >
+    <div class="navbar-nav"></div>
+    <form class="navbar-form form-inline">
+      <div class="input-group search-box">
+        <input
+          type="text"
+          id="search"
+          class="form-control"
+          placeholder="Search here..."
+        />
+        <span class="input-group-addon"
+          ><i class="material-icons">&#xE8B6;</i></span
+        >
+      </div>
+    </form>
+    <div class="navbar-nav ml-auto">
+      <a href="#" class="nav-item nav-link notifications"
+        ><i class="fa fa-bell-o"></i><span class="badge">1</span></a
+      >
+      <a href="#" class="nav-item nav-link messages"
+        ><i class="fa fa-envelope-o"></i><span class="badge">10</span></a
+      >
+      <div class="nav-item dropdown">
+        <a
+          href="#"
+          data-toggle="dropdown"
+          class="nav-link dropdown-toggle user-action"
+          ><img src="assets/images/user.jpg" class="avatar" alt="Avatar" />
+          {{ userDetails.fullName }} <b class="caret"></b
+        ></a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item"
+            ><i class="fa fa-user-o"></i> Profile</a
+          >
+          <a href="#" class="dropdown-item"
+            ><i class="fa fa-calendar-o"></i> Calendar</a
+          >
+          <a href="#" class="dropdown-item"
+            ><i class="fa fa-sliders"></i> Settings</a
+          >
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item" (click)="onLogout()"
+            ><i class="material-icons">&#xE8AC;</i> Logout</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Sidebar -->
+<nav id="sidebar">
+  <div class="sidebar-header" style="text-align: center">
+    <img src="assets/images/logo.png" class="logo" alt="logo" />
+    <p
+      style="font-size: 16px; margin-top: 10px; top: -10px; position: relative"
+    >
+      Management Dashboard
+    </p>
+  </div>
+
+  <ul class="list-unstyled components">
+    <li>
+      <a [routerLink]="">Overview</a>
+    </li>
+    <mat-divider></mat-divider>
+    <li>
+      <a
+        href="#stdSubmenu"
+        data-toggle="collapse"
+        aria-expanded="false"
+        class="dropdown-toggle"
+        >Students</a
+      >
+      <ul class="collapse list-unstyled" id="stdSubmenu">
+        <li>
+          <a [routerLink]="">Enroll</a>
+        </li>
+        <li>
+          <a [routerLink]="">Update / Unenroll</a>
+        </li>
+        <li>
+          <a [routerLink]="">Student Archives</a>
+        </li>
+      </ul>
+    </li>
+    <mat-divider></mat-divider>
+    <li>
+      <a
+        href="#teachSubmenu"
+        data-toggle="collapse"
+        aria-expanded="false"
+        class="dropdown-toggle"
+        >Teachers</a
+      >
+      <ul class="collapse list-unstyled" id="teachSubmenu">
+        <li>
+          <a [routerLink]="">Add a teacher</a>
+        </li>
+        <li>
+          <a [routerLink]="">Manage details</a>
+        </li>
+        <li>
+          <a [routerLink]="">History</a>
+        </li>
+      </ul>
+    </li>
+    <mat-divider></mat-divider>
+    <li>
+      <a
+        href="#classSubmenu"
+        data-toggle="collapse"
+        aria-expanded="false"
+        class="dropdown-toggle"
+        >Classes</a
+      >
+      <ul class="collapse list-unstyled" id="classSubmenu">
+        <li>
+          <a [routerLink]="">Add Class & Class Teachers</a>
+        </li>
+        <li>
+          <a [routerLink]="">View Details</a>
+        </li>
+        <li>
+          <a [routerLink]="">Summary of Classes</a>
+        </li>
+        <li>
+          <a [routerLink]="">Primary Section Summary</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<div class="inner-container">
+  <router-outlet></router-outlet>
+</div>
