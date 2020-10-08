@@ -1,0 +1,234 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fafafa;
+}
+
+hr {
+  border-top: 1px solid #852d59;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.logo {
+  width: 100px;
+}
+
+.inner-container {
+  margin-left: 250px;
+  padding: 40px;
+}
+
+#sidebar {
+  /* don't forget to add all the previously mentioned styles here too */
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 9000;
+  background: #852d59;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+  padding: 5px;
+  background: #852d59;
+}
+
+#sidebar ul.components {
+  padding: 10px 0 10px 0;
+}
+
+#sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+#sidebar ul li a {
+  padding: 10px 30px;
+  font-size: 1.1em;
+  display: block;
+}
+#sidebar ul li a:hover {
+  color: #852d59;
+  background: #fff;
+}
+
+#sidebar ul li.active > a,
+a[aria-expanded="true"] {
+  color: #fff;
+  background: #852d59;
+}
+
+/* hover background */
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: #852d59;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  /* align-items: stretch; */
+}
+
+#sidebar.active {
+  margin-left: -250px;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 100vh;
+}
+
+.active {
+  color: white;
+}
+
+.form-inline {
+  display: inline-block;
+}
+.navbar-header.col {
+  padding: 0 !important;
+}
+.navbar {
+  background: #fff;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-bottom: 1px solid #d6d6d6;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+.nav-link img {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  margin: -8px 0;
+  float: left;
+  margin-right: 10px;
+}
+.navbar .navbar-brand {
+  color: #555;
+  padding-left: 0;
+  padding-right: 50px;
+  font-family: "Merienda One", sans-serif;
+}
+.navbar .navbar-brand i {
+  font-size: 20px;
+  margin-right: 5px;
+}
+.search-box {
+  position: relative;
+}
+.search-box input {
+  box-shadow: none;
+  padding-right: 35px;
+  border-radius: 3px !important;
+}
+.search-box .input-group-addon {
+  min-width: 35px;
+  border: none;
+  background: transparent;
+  position: absolute;
+  right: 0;
+  z-index: 9;
+  padding: 7px;
+  height: 100%;
+}
+.search-box i {
+  color: #a0a5b1;
+  font-size: 19px;
+}
+.navbar .nav-item i {
+  font-size: 16px;
+}
+.navbar .dropdown-item i {
+  font-size: 14px;
+  min-width: 22px;
+}
+.navbar .nav-item.open > a {
+  background: none !important;
+}
+.navbar .dropdown-menu {
+  border-radius: 1px;
+  border-color: #e5e5e5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.navbar .dropdown-menu a {
+  color: #777;
+  padding: 8px 20px;
+  line-height: normal;
+}
+.navbar .dropdown-menu a:hover,
+.navbar .dropdown-menu a:active {
+  color: #333;
+}
+.navbar .dropdown-item .material-icons {
+  font-size: 21px;
+  line-height: 16px;
+  vertical-align: middle;
+  margin-top: -2px;
+}
+.navbar .badge {
+  color: #fff;
+  background: #f44336;
+  font-size: 11px;
+  border-radius: 20px;
+  position: absolute;
+  min-width: 10px;
+  padding: 4px 6px 0;
+  min-height: 18px;
+  top: 5px;
+}
+.navbar a.notifications,
+.navbar a.messages {
+  position: relative;
+  margin-right: 10px;
+}
+.navbar a.messages {
+  margin-right: 20px;
+}
+.navbar a.notifications .badge {
+  margin-left: -8px;
+}
+.navbar a.messages .badge {
+  margin-left: -4px;
+}
+.navbar .active a,
+.navbar .active a:hover,
+.navbar .active a:focus {
+  background: transparent !important;
+}
+@media (min-width: 1200px) {
+  .form-inline .input-group {
+    width: 300px;
+    margin-left: 30px;
+  }
+}
+@media (max-width: 1199px) {
+  .form-inline {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .input-group {
+    width: 100%;
+  }
+}
