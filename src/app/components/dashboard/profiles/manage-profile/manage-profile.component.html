@@ -1,1 +1,39 @@
-<p>manage-profile works!</p>
+<h4 class="topic">Accessible Users</h4>
+<div class="button-div">
+  <a
+    mat-raised-button
+    style="background-color: #1fdb48; color: white; float: right"
+    (click)="navigateCreate()"
+    >+ New user</a
+  >
+</div>
+<br />
+<br />
+<div class="list mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+    <!-- RegNo Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef><b> Name </b></th>
+      <td mat-cell *matCellDef="let user">{{ user.fullName }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef><b> E-mail </b></th>
+      <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef><b> Action </b></th>
+      <td mat-cell *matCellDef="let user">
+        <a mat-raised-button color="warn" (click)="openDialog(user._id)"
+          >Remove</a
+        >
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

@@ -1,0 +1,22 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-stroked-button {
+  margin-right: 20px;
+}
+
+.list {
+  background: #ffffff;
+  padding: 10px;
+}
+
+.topic {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+}
