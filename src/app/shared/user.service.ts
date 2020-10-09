@@ -41,6 +41,14 @@ export class UserService {
     return this.http.get(environment.apiHost + '/userProfile');
   }
 
+  getAllUsers() {
+    return this.http.get(environment.apiHost + '/users');
+  }
+
+  deleteUserById(id: string) {
+    return this.http.delete(environment.apiHost + '/users/' + id);
+  }
+
   //Helper Methods
 
   setToken(token: string) {

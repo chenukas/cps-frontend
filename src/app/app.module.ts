@@ -7,7 +7,10 @@ import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProfilesComponent } from './components/dashboard/profiles/profiles.component';
 import { CreateProfileComponent } from './components/dashboard/profiles/create-profile/create-profile.component';
-import { ManageProfileComponent } from './components/dashboard/profiles/manage-profile/manage-profile.component';
+import {
+  ManageProfileComponent,
+  DialogBoxUserDel,
+} from './components/dashboard/profiles/manage-profile/manage-profile.component';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -32,6 +35,7 @@ import { ManageSupplierComponent } from './components/dashboard/suppliers/manage
 import { PaymentsComponent } from './components/dashboard/payments/payments.component';
 
 @NgModule({
+  entryComponents: [DialogBoxUserDel],
   declarations: [
     AppComponent,
     DashboardComponent,
@@ -52,6 +56,7 @@ import { PaymentsComponent } from './components/dashboard/payments/payments.comp
     CreateSupplierComponent,
     ManageSupplierComponent,
     PaymentsComponent,
+    DialogBoxUserDel,
   ],
   imports: [
     BrowserModule,
