@@ -79,67 +79,58 @@
       <a [routerLink]="['overview']">Overview</a>
     </li>
     <mat-divider></mat-divider>
+    <li>
+      <a
+        href="#requiSubmenu"
+        data-toggle="collapse"
+        aria-expanded="false"
+        class="dropdown-toggle"
+        >Requisitions</a
+      >
+      <ul class="collapse list-unstyled" id="requiSubmenu">
+        <li>
+          <a [routerLink]="['requisitions/create']">Create</a>
+        </li>
+        <li *ngIf="userDetails.userType == 0">
+          <a [routerLink]="['requisitions/manage']">Manage</a>
+        </li>
+      </ul>
+    </li>
+    <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
+    <li *ngIf="userDetails.userType == 0">
+      <a [routerLink]="['projects/manage']">Projects/Sites</a>
+    </li>
+
+    <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
+
+    <li *ngIf="userDetails.userType == 0">
+      <a [routerLink]="['orders/manage']">Orders</a>
+    </li>
+    <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
+    <li *ngIf="userDetails.userType == 0">
+      <a [routerLink]="['suppliers/manage']">Suppliers</a>
+    </li>
+    <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
     <li *ngIf="userDetails.userType == 0">
       <a
-        href="#profSubmenu"
+        href="#paySubmenu"
         data-toggle="collapse"
         aria-expanded="false"
         class="dropdown-toggle"
-        >Profiles</a
+        >Payments</a
       >
-      <ul class="collapse list-unstyled" id="profSubmenu">
+      <ul class="collapse list-unstyled" id="paySubmenu">
         <li>
-          <a [routerLink]="['profiles/create']">Create</a>
+          <a [routerLink]="['payments']">Create</a>
         </li>
         <li>
-          <a [routerLink]="['profiles/manage']">Manage</a>
+          <a [routerLink]="['payments']">Manage</a>
         </li>
       </ul>
     </li>
-    <mat-divider></mat-divider>
-    <li>
-      <a
-        href="#teachSubmenu"
-        data-toggle="collapse"
-        aria-expanded="false"
-        class="dropdown-toggle"
-        >Teachers</a
-      >
-      <ul class="collapse list-unstyled" id="teachSubmenu">
-        <li>
-          <a [routerLink]="">Add a teacher</a>
-        </li>
-        <li>
-          <a [routerLink]="">Manage details</a>
-        </li>
-        <li>
-          <a [routerLink]="">History</a>
-        </li>
-      </ul>
-    </li>
-    <mat-divider></mat-divider>
-    <li>
-      <a
-        href="#classSubmenu"
-        data-toggle="collapse"
-        aria-expanded="false"
-        class="dropdown-toggle"
-        >Classes</a
-      >
-      <ul class="collapse list-unstyled" id="classSubmenu">
-        <li>
-          <a [routerLink]="">Add Class & Class Teachers</a>
-        </li>
-        <li>
-          <a [routerLink]="">View Details</a>
-        </li>
-        <li>
-          <a [routerLink]="">Summary of Classes</a>
-        </li>
-        <li>
-          <a [routerLink]="">Primary Section Summary</a>
-        </li>
-      </ul>
+    <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
+    <li *ngIf="userDetails.userType == 0">
+      <a [routerLink]="['profiles/manage']">Profiles</a>
     </li>
   </ul>
 </nav>
