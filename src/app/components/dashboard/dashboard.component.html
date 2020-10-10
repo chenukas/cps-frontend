@@ -46,13 +46,14 @@
         ></a>
         <div class="dropdown-menu">
           <a href="#" class="dropdown-item"
-            ><i class="fa fa-user-o"></i> {{ userDetails.email }}</a
+            ><i class="fa fa-envelope"></i> {{ userDetails.email }}</a
           >
           <a href="#" class="dropdown-item"
-            ><i class="fa fa-calendar-o"></i> Calendar</a
+            ><i class="fa fa-globe"></i> {{ userDetails.site.siteName }} -
+            {{ userDetails.site.city }}</a
           >
           <a href="#" class="dropdown-item"
-            ><i class="fa fa-sliders"></i> Settings</a
+            ><i class="fa fa-phone-square"></i> {{ userDetails.telephone }}</a
           >
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item" (click)="onLogout()"
