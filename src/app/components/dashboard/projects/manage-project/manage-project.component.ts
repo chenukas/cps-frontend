@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SitesService } from 'src/app/shared/sites.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {MatPaginator} from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 
 interface APIResponse {
   success : boolean,
