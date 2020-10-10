@@ -10,6 +10,9 @@ import { User } from './user.model';
 export class UserService {
   selectedUser: User = {
     fullName: '',
+    address: '',
+    telephone: '',
+    site: '',
     userType: '',
     email: '',
     password: '',
@@ -39,6 +42,14 @@ export class UserService {
 
   getUserProfile() {
     return this.http.get(environment.apiHost + '/userProfile');
+  }
+
+  getAllUsers() {
+    return this.http.get(environment.apiHost + '/users');
+  }
+
+  deleteUserById(id: string) {
+    return this.http.delete(environment.apiHost + '/users/' + id);
   }
 
   //Helper Methods

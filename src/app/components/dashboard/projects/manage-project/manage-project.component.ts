@@ -43,10 +43,6 @@ export class ManageProjectComponent implements OnInit {
         console.log(err.message);
       }
     );
-    this.siteService.viewSites().subscribe((response: APIResponse) => {
-      this.dataSource = response.data;
-      this.dataSource.paginator = this.paginator;
-    });
   }
  
   addSite() {

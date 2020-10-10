@@ -1,0 +1,21 @@
+.width {
+  width: 100%;
+}
+
+.lwidth {
+  width: 100%;
+}
+
+form button {
+  margin-right: 20px;
+}
+
+#note {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.topic {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+}
