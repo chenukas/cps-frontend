@@ -122,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "cps-frontend"
+  "defaultProject": "cps-frontend",
+  "cli": {
+    "analytics": false
+  }
 }
