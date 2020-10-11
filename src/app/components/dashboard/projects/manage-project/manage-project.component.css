@@ -1,0 +1,27 @@
+h2 {
+  font-family: "Poppins", sans-serif;
+  color: #000;
+  text-align: left;
+}
+
+mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+h4 {
+  color: #000;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-stroked-button {
+  margin-right: 20px;
+  float: right;
+}
+
+.mat-raised-button {
+  margin-bottom: 20px;
+}
