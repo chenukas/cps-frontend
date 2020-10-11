@@ -3,11 +3,10 @@
 <div>
     <button
     mat-raised-button
-    color="primary"
-    style="float: right"
+    style="background-color: #1fdb48; color: white; float: right"
     (click)="addSite()"
   >
-    + Add New Site
+    + New Site
   </button>
 </div>
 
@@ -28,7 +27,7 @@
             <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Action </th>
             <td mat-cell *matCellDef="let site">
                 <a mat-stroked-button style="color: #1125e2;" (click) = "updateSiteDetails(site._id)">Update</a>
-                <a mat-stroked-button style="color: #ec0c0c;" (click) = "deleteSiteById(site._id)">Delete</a>
+                <a mat-stroked-button style="color: #ec0c0c;" (click) = "deleteSiteDetails(site._id)">Delete</a>
             </td>   
         </ng-container>
 
