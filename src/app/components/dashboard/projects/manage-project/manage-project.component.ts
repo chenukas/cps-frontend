@@ -21,12 +21,6 @@ export class ManageProjectComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  private _id: String;
-  private siteNo: String;
-  private siteName: String;
-  private address: String;
-  private city: String;
-  private phoneNo: Number;
 
   constructor(
     private siteService: SitesService,
@@ -35,22 +29,22 @@ export class ManageProjectComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._id = '';
-    this.siteNo = '';
-    this.siteName = '';
-    this.address = '';
-    this.city = '';
-    this.phoneNo = this.phoneNo;
+   
     this.viewAllSites();
   }
 
   viewAllSites() {
-    this.siteService.viewSites().subscribe((response: APIResponse) => {
-      this.dataSource = response.data;
-      this.dataSource.paginator = this.paginator;
-    });
+    this.siteService.viewSites().subscribe(
+      (res: any) => {
+        this.dataSource = res.data;
+        this.dataSource.paginator = this.paginator;
+      },
+      (err) => {
+        console.log(err.message);
+      }
+    );
   }
-
+ 
   addSite() {
     this.router.navigate(['dashboard/projects/create']);
   }
@@ -71,3 +65,4 @@ export class ManageProjectComponent implements OnInit {
     );
   }
 }
+
