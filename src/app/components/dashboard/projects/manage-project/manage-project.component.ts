@@ -19,7 +19,7 @@ export class ManageProjectComponent implements OnInit {
   displayedColumns = ['siteNo', 'siteName', 'action'];
   dataSource = new MatTableDataSource;
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   public siteNo: string;
   public siteName: string;
@@ -45,7 +45,7 @@ export class ManageProjectComponent implements OnInit {
   viewAllSites() {
     this.siteService.viewSites().subscribe(
       (res: APIResponse) => {
-        this.dataSource = res.data;
+        this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
       });
   }
