@@ -17,10 +17,16 @@ interface APIResponse {
 })
 export class ManageProjectComponent implements OnInit {
   displayedColumns = ['siteNo', 'siteName', 'action'];
-  dataSource = new MatTableDataSource();
+  dataSource = new MatTableDataSource;
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
+  public siteNo: string;
+  public siteName: string;
+  public location: string;
+  public budget: number;
+  public _id: string;
+  public sites: [];
 
   constructor(
     private siteService: SitesService,
@@ -30,19 +36,18 @@ export class ManageProjectComponent implements OnInit {
 
   ngOnInit(): void {
    
+    //this._id = '';
+    //this.siteNo ='';
+    //this.siteName = '';
     this.viewAllSites();
   }
 
   viewAllSites() {
     this.siteService.viewSites().subscribe(
-      (res: any) => {
-        this.dataSource = res.data;
+      (res: APIResponse) => {
+        this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
-      },
-      (err) => {
-        console.log(err.message);
-      }
-    );
+      });
   }
  
   addSite() {
@@ -63,6 +68,10 @@ export class ManageProjectComponent implements OnInit {
         console.log(err.message);
       }
     );
+  }
+
+  updateSiteDetails(id : String) {
+    this.router.navigate(['dashboard/projects/create'], { queryParams: { id } });
   }
 }
 

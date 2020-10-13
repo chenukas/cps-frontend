@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { environment } from '../../environments/environment';
-import { Site } from './sites.model';
+
 
 @Injectable({
     providedIn: 'root'
@@ -14,8 +13,8 @@ export class SitesService {
         private http: HttpClient
     ) { }
 
-    public addSite(siteNo, siteName, address, city, phoneNo){
-        return this.http.post(`${environment.apiHost}/sites`, {siteNo, siteName, address, city, phoneNo});
+    public addSite(siteNo, siteName, location, budget){
+        return this.http.post(`${environment.apiHost}/sites`, {siteNo, siteName, location, budget});
     }
 
     public viewSites(){
