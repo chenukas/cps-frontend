@@ -1,12 +1,14 @@
 export class Site {
         private siteNo: string;
         private siteName:  string;
+        private siteManagerName: string;
         private location: string;
         private budget: number;
 
         constructor(value) {
                 this.siteNo = value.siteNo;
                 this.siteName = value.siteName;
+                this.siteManagerName = value.siteManagerName;
                 this.location = value.location;
                 this.budget = value.budget;
         }
@@ -25,6 +27,14 @@ export class Site {
 
         public set setSiteName(siteName : string) {
                 this.siteName = siteName;
+        }
+
+        public get getSiteManagerName() : string {
+                return this.siteManagerName;
+        }
+
+        public set setSiteManagerName(siteManagerName : string) {
+                this.siteManagerName = siteManagerName;
         }
 
         public get getLocation() : string {

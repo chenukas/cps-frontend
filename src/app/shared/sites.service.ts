@@ -13,8 +13,8 @@ export class SitesService {
         private http: HttpClient
     ) { }
 
-    public addSite(siteNo, siteName, location, budget){
-        return this.http.post(`${environment.apiHost}/sites`, {siteNo, siteName, location, budget});
+    public addSite(siteNo, siteName, siteManagerName, location, budget){
+        return this.http.post(`${environment.apiHost}/sites`, {siteNo, siteName, siteManagerName, location, budget});
     }
 
     public viewSites(){

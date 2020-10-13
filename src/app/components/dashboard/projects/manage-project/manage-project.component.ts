@@ -4,6 +4,7 @@ import { SitesService } from 'src/app/shared/sites.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 
 interface APIResponse {
   success: boolean;
@@ -23,6 +24,7 @@ export class ManageProjectComponent implements OnInit {
 
   public siteNo: string;
   public siteName: string;
+  public siteManagerName: string;
   public location: string;
   public budget: number;
   public _id: string;
@@ -31,6 +33,7 @@ export class ManageProjectComponent implements OnInit {
   constructor(
     private siteService: SitesService,
     private snackBar: MatSnackBar,
+    public dialog: MatDialog,
     private router: Router
   ) {}
 
@@ -54,8 +57,18 @@ export class ManageProjectComponent implements OnInit {
     this.router.navigate(['dashboard/projects/create']);
   }
 
-  deleteSiteDetails(id: String) {
-    this.siteService.deleteSiteById(id).subscribe(
+  openDialog(_id: string) {
+    const dialogRef = this.dialog.open(DialogBoxSiteDel);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deleteSiteDetails(_id);
+      }
+    });
+  }
+
+  public deleteSiteDetails(_id: String) {
+    this.siteService.deleteSiteById(_id).subscribe(
       (response) => {
         console.log(response);
         this.snackBar.open('Site Details Are Successfully Deleted', null, {
@@ -64,8 +77,10 @@ export class ManageProjectComponent implements OnInit {
         this.viewAllSites();
       },
       (err) => {
-        this.snackBar.open('Unsuccessful', null, { duration: 3000 });
-        console.log(err.message);
+        //error msg
+        this.snackBar.open(err.message, '', {
+          duration: 2000,
+        });
       }
     );
   }
@@ -73,5 +88,15 @@ export class ManageProjectComponent implements OnInit {
   updateSiteDetails(id : String) {
     this.router.navigate(['dashboard/projects/create'], { queryParams: { id } });
   }
+}
+
+@Component({
+  selector: 'dialogBoxSiteDel',
+  templateUrl: 'dialogBoxSiteDel.html',
+})
+export class DialogBoxSiteDel {
+  constructor() {}
+
+  public deleteSiteDetails() {}
 }
 
