@@ -4,6 +4,7 @@ import { SitesService } from 'src/app/shared/sites.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 
 interface APIResponse {
   success: boolean;
@@ -17,40 +18,57 @@ interface APIResponse {
 })
 export class ManageProjectComponent implements OnInit {
   displayedColumns = ['siteNo', 'siteName', 'action'];
-  dataSource = new MatTableDataSource();
+  dataSource = new MatTableDataSource;
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
+  public siteNo: string;
+  public siteName: string;
+  public siteManagerName: string;
+  public location: string;
+  public budget: number;
+  public _id: string;
+  public sites: [];
 
   constructor(
     private siteService: SitesService,
     private snackBar: MatSnackBar,
+    public dialog: MatDialog,
     private router: Router
   ) {}
 
   ngOnInit(): void {
    
+    //this._id = '';
+    //this.siteNo ='';
+    //this.siteName = '';
     this.viewAllSites();
   }
 
   viewAllSites() {
     this.siteService.viewSites().subscribe(
-      (res: any) => {
-        this.dataSource = res.data;
+      (res: APIResponse) => {
+        this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
-      },
-      (err) => {
-        console.log(err.message);
-      }
-    );
+      });
   }
  
   addSite() {
     this.router.navigate(['dashboard/projects/create']);
   }
 
-  deleteSiteDetails(id: String) {
-    this.siteService.deleteSiteById(id).subscribe(
+  openDialog(_id: string) {
+    const dialogRef = this.dialog.open(DialogBoxSiteDel);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deleteSiteDetails(_id);
+      }
+    });
+  }
+
+  public deleteSiteDetails(_id: String) {
+    this.siteService.deleteSiteById(_id).subscribe(
       (response) => {
         console.log(response);
         this.snackBar.open('Site Details Are Successfully Deleted', null, {
@@ -59,10 +77,26 @@ export class ManageProjectComponent implements OnInit {
         this.viewAllSites();
       },
       (err) => {
-        this.snackBar.open('Unsuccessful', null, { duration: 3000 });
-        console.log(err.message);
+        //error msg
+        this.snackBar.open(err.message, '', {
+          duration: 2000,
+        });
       }
     );
   }
+
+  updateSiteDetails(id : String) {
+    this.router.navigate(['dashboard/projects/create'], { queryParams: { id } });
+  }
+}
+
+@Component({
+  selector: 'dialogBoxSiteDel',
+  templateUrl: 'dialogBoxSiteDel.html',
+})
+export class DialogBoxSiteDel {
+  constructor() {}
+
+  public deleteSiteDetails() {}
 }
 

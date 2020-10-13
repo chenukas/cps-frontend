@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
@@ -26,16 +26,15 @@ import { CreateRequisitionComponent } from './components/dashboard/requisitions/
 import { ManageRequisitionComponent } from './components/dashboard/requisitions/manage-requisition/manage-requisition.component';
 import { ProjectsComponent } from './components/dashboard/projects/projects.component';
 import { CreateProjectComponent } from './components/dashboard/projects/create-project/create-project.component';
-import { ManageProjectComponent } from './components/dashboard/projects/manage-project/manage-project.component';
+import { ManageProjectComponent, DialogBoxSiteDel} from './components/dashboard/projects/manage-project/manage-project.component';
 import { OrdersComponent } from './components/dashboard/orders/orders.component';
-import { ManageOrdersComponent } from './components/dashboard/orders/manage-orders/manage-orders.component';
 import { SuppliersComponent } from './components/dashboard/suppliers/suppliers.component';
 import { CreateSupplierComponent } from './components/dashboard/suppliers/create-supplier/create-supplier.component';
 import { ManageSupplierComponent } from './components/dashboard/suppliers/manage-supplier/manage-supplier.component';
 import { PaymentsComponent } from './components/dashboard/payments/payments.component';
 
 @NgModule({
-  entryComponents: [DialogBoxUserDel],
+  entryComponents: [DialogBoxUserDel, DialogBoxSiteDel],
   declarations: [
     AppComponent,
     DashboardComponent,
@@ -51,12 +50,12 @@ import { PaymentsComponent } from './components/dashboard/payments/payments.comp
     CreateProjectComponent,
     ManageProjectComponent,
     OrdersComponent,
-    ManageOrdersComponent,
     SuppliersComponent,
     CreateSupplierComponent,
     ManageSupplierComponent,
     PaymentsComponent,
     DialogBoxUserDel,
+    DialogBoxSiteDel,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +64,7 @@ import { PaymentsComponent } from './components/dashboard/payments/payments.comp
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
+    RouterModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

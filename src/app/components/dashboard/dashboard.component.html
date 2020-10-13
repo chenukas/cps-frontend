@@ -102,17 +102,27 @@
       <a [routerLink]="['projects/manage']">Projects/Sites</a>
     </li>
 
-    <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
-
-    <li *ngIf="userDetails.userType == 0">
-      <a [routerLink]="['orders/manage']">Orders</a>
+    <mat-divider></mat-divider>
+    <li>
+      <a
+        href="#orderSubmenu"
+        data-toggle="collapse"
+        aria-expanded="false"
+        class="dropdown-toggle"
+        >Orders</a
+      >
+      <ul class="collapse list-unstyled" id="orderSubmenu">
+        <li>
+          <a [routerLink]="['orders']">Create</a>
+        </li>
+      </ul>
     </li>
-    <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
+    <mat-divider></mat-divider>
     <li *ngIf="userDetails.userType == 0">
       <a [routerLink]="['suppliers/manage']">Suppliers</a>
     </li>
     <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
-    <li *ngIf="userDetails.userType == 0">
+    <li>
       <a
         href="#paySubmenu"
         data-toggle="collapse"
@@ -123,9 +133,6 @@
       <ul class="collapse list-unstyled" id="paySubmenu">
         <li>
           <a [routerLink]="['payments']">Create</a>
-        </li>
-        <li>
-          <a [routerLink]="['payments']">Manage</a>
         </li>
       </ul>
     </li>
