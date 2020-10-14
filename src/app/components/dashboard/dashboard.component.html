@@ -120,6 +120,10 @@
     </li>
     <mat-divider></mat-divider>
     <li *ngIf="userDetails.userType == 0">
+      <a [routerLink]="['items/manage']">Stocks</a>
+    </li>
+    <mat-divider></mat-divider>
+    <li *ngIf="userDetails.userType == 0">
       <a [routerLink]="['suppliers/manage']">Suppliers</a>
     </li>
     <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>

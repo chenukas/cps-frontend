@@ -16,6 +16,9 @@ import { SuppliersComponent } from './components/dashboard/suppliers/suppliers.c
 import { CreateSupplierComponent } from './components/dashboard/suppliers/create-supplier/create-supplier.component';
 import { ManageSupplierComponent } from './components/dashboard/suppliers/manage-supplier/manage-supplier.component';
 import { PaymentsComponent } from './components/dashboard/payments/payments.component';
+import { StocksComponent } from './components/dashboard/stocks/stocks.component';
+import { AddStocksComponent } from './components/dashboard/stocks/add-stocks/add-stocks.component';
+import { ManageStocksComponent } from './components/dashboard/stocks/manage-stocks/manage-stocks.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -52,6 +55,14 @@ const routes: Routes = [
       {
         path: 'orders',
         component: OrdersComponent,
+      },
+      {
+        path: 'items',
+        component: StocksComponent,
+        children: [
+          { path: 'add', component: AddStocksComponent },
+          { path: 'manage', component: ManageStocksComponent },
+        ],
       },
       {
         path: 'suppliers',
