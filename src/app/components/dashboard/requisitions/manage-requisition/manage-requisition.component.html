@@ -8,29 +8,34 @@
             <td mat-cell *matCellDef="let requisition">{{ requisition.requisitionID }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="requisitionID">
-            <th mat-header-cell *matHeaderCellDef>Requisition Number</th>
-            <td mat-cell *matCellDef="let requisition">{{ requisition.requisitionID }}</td>
+        <ng-container matColumnDef="requisitionName">
+            <th mat-header-cell *matHeaderCellDef>Requisition Name</th>
+            <td mat-cell *matCellDef="let requisition">{{ requisition.requisitionName }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="requisitionID">
-            <th mat-header-cell *matHeaderCellDef>Requisition Number</th>
-            <td mat-cell *matCellDef="let requisition">{{ requisition.requisitionID }}</td>
+        <ng-container matColumnDef="siteName">
+            <th mat-header-cell *matHeaderCellDef>Site Name</th>
+            <td mat-cell *matCellDef="let requisition">{{ requisition.siteName }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="requisitionID">
-            <th mat-header-cell *matHeaderCellDef>Requisition Number</th>
-            <td mat-cell *matCellDef="let requisition">{{ requisition.requisitionID }}</td>
+        <ng-container matColumnDef="reqSubmitDate">
+            <th mat-header-cell *matHeaderCellDef>Submited Date</th>
+            <td mat-cell *matCellDef="let requisition">{{ requisition.reqSubmitDate }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="requisitionID">
-            <th mat-header-cell *matHeaderCellDef>Requisition Number</th>
-            <td mat-cell *matCellDef="let requisition">{{ requisition.requisitionID }}</td>
+        <ng-container matColumnDef="approvedDate">
+            <th mat-header-cell *matHeaderCellDef>Approved Date</th>
+            <td mat-cell *matCellDef="let requisition">{{ requisition.approvedDate }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="requisitionID">
-            <th mat-header-cell *matHeaderCellDef>Requisition Number</th>
-            <td mat-cell *matCellDef="let requisition">{{ requisition.requisitionID }}</td>
+        <ng-container matColumnDef="totalAmount">
+            <th mat-header-cell *matHeaderCellDef>Total Amount</th>
+            <td mat-cell *matCellDef="let requisition">{{ requisition.totalAmount }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let requisition">{{ requisition.status }}</td>
         </ng-container>
 
         <ng-container matColumnDef="action">
