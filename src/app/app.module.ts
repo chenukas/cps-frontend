@@ -37,6 +37,9 @@ import {
   DialogBoxSupDel,
 } from './components/dashboard/suppliers/manage-supplier/manage-supplier.component';
 import { PaymentsComponent } from './components/dashboard/payments/payments.component';
+import { StocksComponent } from './components/dashboard/stocks/stocks.component';
+import { AddStocksComponent } from './components/dashboard/stocks/add-stocks/add-stocks.component';
+import { ManageStocksComponent } from './components/dashboard/stocks/manage-stocks/manage-stocks.component';
 
 @NgModule({
   entryComponents: [DialogBoxUserDel, DialogBoxSiteDel, DialogBoxSupDel],
@@ -61,6 +64,9 @@ import { PaymentsComponent } from './components/dashboard/payments/payments.comp
     DialogBoxUserDel,
     DialogBoxSiteDel,
     DialogBoxSupDel,
+    StocksComponent,
+    AddStocksComponent,
+    ManageStocksComponent,
   ],
   imports: [
     BrowserModule,
