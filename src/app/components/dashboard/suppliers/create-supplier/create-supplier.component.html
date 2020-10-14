@@ -1,1 +1,103 @@
-<h2>Supplier Management</h2>>
+<h2 *ngIf="!isOnUpdate">Supplier Management - Add Supplier Details</h2>
+<h2 *ngIf="isOnUpdate">Update Supplier Details</h2>
+<br />
+
+<form>
+  <div class="content">
+    <div class="form-row">
+      <div class="col-md-12 col-sm-12">
+        <mat-form-field appearance="outline" class="lwidth">
+          <mat-label>Supplier Id</mat-label>
+          <input
+            maxlength="8"
+            matInput
+            placeholder="Enter the supplier id here"
+            name="supId"
+            [(ngModel)]="supId"
+            required
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-md-12 col-sm-12">
+        <mat-form-field appearance="outline" class="lwidth">
+          <mat-label>Supplier Name</mat-label>
+          <input
+            matInput
+            placeholder="Enter the supplier name here"
+            name="supName"
+            [(ngModel)]="supName"
+            required
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-md-12 col-sm-12">
+        <mat-form-field appearance="outline" class="lwidth">
+          <mat-label>Location</mat-label>
+          <input
+            matInput
+            placeholder="Location"
+            name="supLocation"
+            [(ngModel)]="supLocation"
+            required
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-md-12 col-sm-12">
+        <mat-form-field appearance="outline" class="lwidth">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Enter the email here"
+            name="supEmail"
+            [(ngModel)]="supEmail"
+            required
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-md-12 col-sm-12">
+        <mat-form-field appearance="outline" class="lwidth">
+          <mat-label>Telephone</mat-label>
+          <input
+            matInput
+            placeholder="Enter the telephone here"
+            name="supTel"
+            [(ngModel)]="supTel"
+            required
+            maxlength="10"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <button
+    mat-raised-button
+    color="primary"
+    style="float: right"
+    (click)="addSupplier()"
+    *ngIf="!isOnUpdate"
+  >
+    Save Details
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    style="float: right"
+    (click)="updateSupplierDetails()"
+    *ngIf="isOnUpdate"
+  >
+    Update Details
+  </button>
+</form>

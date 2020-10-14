@@ -5,7 +5,7 @@ h2 {
 }
 
 mat-form-field {
-  width: 80%;
+  width: 100%;
   border-radius: 20%;
 }
 
@@ -14,7 +14,6 @@ h4 {
 }
 
 .mat-raised-button {
-  margin-right: 100px;
   float: right;
   margin-bottom: 40px;
 }
