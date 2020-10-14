@@ -22,7 +22,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
 import { RequisitionsComponent } from './components/dashboard/requisitions/requisitions.component';
-import { CreateRequisitionComponent } from './components/dashboard/requisitions/create-requisition/create-requisition.component';
 import { ManageRequisitionComponent } from './components/dashboard/requisitions/manage-requisition/manage-requisition.component';
 import { ProjectsComponent } from './components/dashboard/projects/projects.component';
 import { CreateProjectComponent } from './components/dashboard/projects/create-project/create-project.component';
@@ -50,7 +49,6 @@ import { PaymentsComponent } from './components/dashboard/payments/payments.comp
     ManageProfileComponent,
     OverviewComponent,
     RequisitionsComponent,
-    CreateRequisitionComponent,
     ManageRequisitionComponent,
     ProjectsComponent,
     CreateProjectComponent,

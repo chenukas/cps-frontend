@@ -7,7 +7,6 @@ import { ProfilesComponent } from './components/dashboard/profiles/profiles.comp
 import { CreateProfileComponent } from './components/dashboard/profiles/create-profile/create-profile.component';
 import { ManageProfileComponent } from './components/dashboard/profiles/manage-profile/manage-profile.component';
 import { RequisitionsComponent } from './components/dashboard/requisitions/requisitions.component';
-import { CreateRequisitionComponent } from './components/dashboard/requisitions/create-requisition/create-requisition.component';
 import { ManageRequisitionComponent } from './components/dashboard/requisitions/manage-requisition/manage-requisition.component';
 import { ProjectsComponent } from './components/dashboard/projects/projects.component';
 import { CreateProjectComponent } from './components/dashboard/projects/create-project/create-project.component';
@@ -32,10 +31,7 @@ const routes: Routes = [
       {
         path: 'requisitions',
         component: RequisitionsComponent,
-        children: [
-          { path: 'create', component: CreateRequisitionComponent },
-          { path: 'manage', component: ManageRequisitionComponent },
-        ],
+        children: [{ path: 'manage', component: ManageRequisitionComponent }],
       },
       {
         path: 'projects',
