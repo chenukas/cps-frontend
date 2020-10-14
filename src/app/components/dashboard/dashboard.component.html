@@ -49,7 +49,7 @@
             ><i class="fa fa-envelope"></i> {{ userDetails.email }}</a
           >
           <a href="#" class="dropdown-item"
-            ><i class="fa fa-globe"></i> {{ userDetails.site.siteName }}</a
+            ><i class="fa fa-globe"></i> {{ userDetails.address }}</a
           >
           <a href="#" class="dropdown-item"
             ><i class="fa fa-phone-square"></i> {{ userDetails.telephone }}</a
@@ -124,11 +124,11 @@
     </li>
     <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
     <li *ngIf="userDetails.userType == 0">
-      <a [routerLink]="['profiles/manage']">Profiles</a>
+      <a [routerLink]="['projects/manage']">Projects/Sites</a>
     </li>
     <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
     <li *ngIf="userDetails.userType == 0">
-      <a [routerLink]="['projects/manage']">Projects/Sites</a>
+      <a [routerLink]="['profiles/manage']">Profiles</a>
     </li>
   </ul>
 </nav>
