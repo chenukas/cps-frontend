@@ -17,10 +17,17 @@ interface APIResponse {
   styleUrls: ['./manage-project.component.css'],
 })
 export class ManageProjectComponent implements OnInit {
-  displayedColumns = ['siteNo', 'siteName', 'action'];
-  dataSource = new MatTableDataSource;
+  displayedColumns = [
+    'siteNo',
+    'siteName',
+    'location',
+    'sitemgr',
+    'budget',
+    'action',
+  ];
+  dataSource = new MatTableDataSource();
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   public siteNo: string;
   public siteName: string;
@@ -38,7 +45,6 @@ export class ManageProjectComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-   
     //this._id = '';
     //this.siteNo ='';
     //this.siteName = '';
@@ -46,13 +52,12 @@ export class ManageProjectComponent implements OnInit {
   }
 
   viewAllSites() {
-    this.siteService.viewSites().subscribe(
-      (res: APIResponse) => {
-        this.dataSource = new MatTableDataSource(res.data);
-        this.dataSource.paginator = this.paginator;
-      });
+    this.siteService.viewSites().subscribe((res: APIResponse) => {
+      this.dataSource = new MatTableDataSource(res.data);
+      this.dataSource.paginator = this.paginator;
+    });
   }
- 
+
   addSite() {
     this.router.navigate(['dashboard/projects/create']);
   }
@@ -85,8 +90,10 @@ export class ManageProjectComponent implements OnInit {
     );
   }
 
-  updateSiteDetails(id : String) {
-    this.router.navigate(['dashboard/projects/create'], { queryParams: { id } });
+  updateSiteDetails(id: String) {
+    this.router.navigate(['dashboard/projects/create'], {
+      queryParams: { id },
+    });
   }
 }
 
@@ -99,4 +106,3 @@ export class DialogBoxSiteDel {
 
   public deleteSiteDetails() {}
 }
-
