@@ -4,7 +4,6 @@ import { UserService } from 'src/app/shared/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 
 interface APIResponse {
   success: boolean;
@@ -27,7 +26,6 @@ export class CreateProjectComponent implements OnInit {
   public isOnUpdate: boolean;
 
   constructor(
-    private form: FormsModule,
     private snackbar: MatSnackBar,
     private router: Router,
     private sitesService: SitesService,
