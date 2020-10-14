@@ -98,10 +98,10 @@ export class CreateSupplierComponent implements OnInit {
       .subscribe(
         (response) => {
           console.log(response);
-          this.snackbar.open('Site details are successfully updated', '', {
+          this.snackbar.open('Supplier details are successfully updated', '', {
             duration: 2000,
           });
-          this.router.navigate(['/dashboard/projects/manage']);
+          this.router.navigate(['/dashboard/suppliers/manage']);
         },
         (err) => {
           this.snackbar.open('Unsuccessfull', '', { duration: 2000 });
