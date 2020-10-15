@@ -31,7 +31,7 @@ export class CreateSupplierComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.supId = 'P2020_';
+    this.supId = '';
     this.supName = '';
     this.supLocation = '';
     this.supEmail = '';
@@ -50,7 +50,16 @@ export class CreateSupplierComponent implements OnInit {
             this.supTel = res.data.supTel;
             this.isOnUpdate = true;
           });
+      } else {
+        this.isOnUpdate = false;
+        this.generateNextSupNo();
       }
+    });
+  }
+
+  generateNextSupNo() {
+    this.supplierService.getNextSupNo().subscribe((res: { data: any }) => {
+      this.supId = res.data;
     });
   }
 
@@ -79,7 +88,7 @@ export class CreateSupplierComponent implements OnInit {
   }
 
   clear() {
-    this.supId = 'P2020_';
+    this.supId = '';
     this.supName = '';
     this.supLocation = '';
     this.supEmail = '';
