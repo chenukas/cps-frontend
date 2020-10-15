@@ -7,7 +7,6 @@ import { ProfilesComponent } from './components/dashboard/profiles/profiles.comp
 import { CreateProfileComponent } from './components/dashboard/profiles/create-profile/create-profile.component';
 import { ManageProfileComponent } from './components/dashboard/profiles/manage-profile/manage-profile.component';
 import { RequisitionsComponent } from './components/dashboard/requisitions/requisitions.component';
-import { CreateRequisitionComponent } from './components/dashboard/requisitions/create-requisition/create-requisition.component';
 import { ManageRequisitionComponent } from './components/dashboard/requisitions/manage-requisition/manage-requisition.component';
 import { ProjectsComponent } from './components/dashboard/projects/projects.component';
 import { CreateProjectComponent } from './components/dashboard/projects/create-project/create-project.component';
@@ -17,6 +16,9 @@ import { SuppliersComponent } from './components/dashboard/suppliers/suppliers.c
 import { CreateSupplierComponent } from './components/dashboard/suppliers/create-supplier/create-supplier.component';
 import { ManageSupplierComponent } from './components/dashboard/suppliers/manage-supplier/manage-supplier.component';
 import { PaymentsComponent } from './components/dashboard/payments/payments.component';
+import { StocksComponent } from './components/dashboard/stocks/stocks.component';
+import { AddStocksComponent } from './components/dashboard/stocks/add-stocks/add-stocks.component';
+import { ManageStocksComponent } from './components/dashboard/stocks/manage-stocks/manage-stocks.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -32,10 +34,7 @@ const routes: Routes = [
       {
         path: 'requisitions',
         component: RequisitionsComponent,
-        children: [
-          { path: 'create', component: CreateRequisitionComponent },
-          { path: 'manage', component: ManageRequisitionComponent },
-        ],
+        children: [{ path: 'manage', component: ManageRequisitionComponent }],
       },
       {
         path: 'projects',
@@ -56,6 +55,14 @@ const routes: Routes = [
       {
         path: 'orders',
         component: OrdersComponent,
+      },
+      {
+        path: 'items',
+        component: StocksComponent,
+        children: [
+          { path: 'add', component: AddStocksComponent },
+          { path: 'manage', component: ManageStocksComponent },
+        ],
       },
       {
         path: 'suppliers',

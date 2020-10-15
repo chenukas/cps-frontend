@@ -22,20 +22,36 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
 import { RequisitionsComponent } from './components/dashboard/requisitions/requisitions.component';
-import { CreateRequisitionComponent } from './components/dashboard/requisitions/create-requisition/create-requisition.component';
 import { ManageRequisitionComponent } from './components/dashboard/requisitions/manage-requisition/manage-requisition.component';
 import { ProjectsComponent } from './components/dashboard/projects/projects.component';
 import { CreateProjectComponent } from './components/dashboard/projects/create-project/create-project.component';
-import { ManageProjectComponent } from './components/dashboard/projects/manage-project/manage-project.component';
+import {
+  ManageProjectComponent,
+  DialogBoxSiteDel,
+} from './components/dashboard/projects/manage-project/manage-project.component';
 import { OrdersComponent } from './components/dashboard/orders/orders.component';
 import { SuppliersComponent } from './components/dashboard/suppliers/suppliers.component';
 import { CreateSupplierComponent } from './components/dashboard/suppliers/create-supplier/create-supplier.component';
-import { ManageSupplierComponent } from './components/dashboard/suppliers/manage-supplier/manage-supplier.component';
+import {
+  ManageSupplierComponent,
+  DialogBoxSupDel,
+} from './components/dashboard/suppliers/manage-supplier/manage-supplier.component';
 import { PaymentsComponent } from './components/dashboard/payments/payments.component';
 import { ManageOrderComponent } from './components/dashboard/orders/manage-order/manage-order.component';
+import { StocksComponent } from './components/dashboard/stocks/stocks.component';
+import { AddStocksComponent } from './components/dashboard/stocks/add-stocks/add-stocks.component';
+import {
+  ManageStocksComponent,
+  DialogBoxStockDel,
+} from './components/dashboard/stocks/manage-stocks/manage-stocks.component';
 
 @NgModule({
-  entryComponents: [DialogBoxUserDel],
+  entryComponents: [
+    DialogBoxUserDel,
+    DialogBoxSiteDel,
+    DialogBoxSupDel,
+    DialogBoxStockDel,
+  ],
   declarations: [
     AppComponent,
     DashboardComponent,
@@ -45,7 +61,6 @@ import { ManageOrderComponent } from './components/dashboard/orders/manage-order
     ManageProfileComponent,
     OverviewComponent,
     RequisitionsComponent,
-    CreateRequisitionComponent,
     ManageRequisitionComponent,
     ProjectsComponent,
     CreateProjectComponent,
@@ -57,6 +72,12 @@ import { ManageOrderComponent } from './components/dashboard/orders/manage-order
     PaymentsComponent,
     DialogBoxUserDel,
     ManageOrderComponent,
+    DialogBoxSiteDel,
+    DialogBoxSupDel,
+    StocksComponent,
+    AddStocksComponent,
+    ManageStocksComponent,
+    DialogBoxStockDel,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +86,7 @@ import { ManageOrderComponent } from './components/dashboard/orders/manage-order
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

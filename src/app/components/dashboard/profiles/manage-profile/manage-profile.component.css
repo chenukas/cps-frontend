@@ -1,3 +1,9 @@
+h2 {
+  font-family: "Poppins", sans-serif;
+  color: #852d59;
+  text-align: left;
+}
+
 table {
   width: 100%;
 }
@@ -7,16 +13,7 @@ table {
   width: 100%;
 }
 
-.mat-stroked-button {
-  margin-right: 20px;
-}
-
 .list {
   background: #ffffff;
   padding: 10px;
-}
-
-.topic {
-  text-align: center;
-  font-family: "Courier New", Courier, monospace;
 }

@@ -49,8 +49,7 @@
             ><i class="fa fa-envelope"></i> {{ userDetails.email }}</a
           >
           <a href="#" class="dropdown-item"
-            ><i class="fa fa-globe"></i> {{ userDetails.site.siteName }} -
-            {{ userDetails.site.city }}</a
+            ><i class="fa fa-globe"></i> {{ userDetails.address }}</a
           >
           <a href="#" class="dropdown-item"
             ><i class="fa fa-phone-square"></i> {{ userDetails.telephone }}</a
@@ -80,26 +79,8 @@
       <a [routerLink]="['overview']">Overview</a>
     </li>
     <mat-divider></mat-divider>
-    <li>
-      <a
-        href="#requiSubmenu"
-        data-toggle="collapse"
-        aria-expanded="false"
-        class="dropdown-toggle"
-        >Requisitions</a
-      >
-      <ul class="collapse list-unstyled" id="requiSubmenu">
-        <li>
-          <a [routerLink]="['requisitions/create']">Create</a>
-        </li>
-        <li *ngIf="userDetails.userType == 0">
-          <a [routerLink]="['requisitions/manage']">Manage</a>
-        </li>
-      </ul>
-    </li>
-    <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
     <li *ngIf="userDetails.userType == 0">
-      <a [routerLink]="['projects/manage']">Projects/Sites</a>
+      <a [routerLink]="['requisitions/manage']">Requisitions</a>
     </li>
 
     <mat-divider></mat-divider>
@@ -117,10 +98,7 @@
         </li>
       </ul>
     </li>
-    <mat-divider></mat-divider>
-    <li *ngIf="userDetails.userType == 0">
-      <a [routerLink]="['suppliers/manage']">Suppliers</a>
-    </li>
+
     <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
     <li>
       <a
@@ -135,6 +113,18 @@
           <a [routerLink]="['payments']">Create</a>
         </li>
       </ul>
+    </li>
+    <mat-divider></mat-divider>
+    <li *ngIf="userDetails.userType == 0">
+      <a [routerLink]="['items/manage']">Stocks</a>
+    </li>
+    <mat-divider></mat-divider>
+    <li *ngIf="userDetails.userType == 0">
+      <a [routerLink]="['suppliers/manage']">Suppliers</a>
+    </li>
+    <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
+    <li *ngIf="userDetails.userType == 0">
+      <a [routerLink]="['projects/manage']">Projects/Sites</a>
     </li>
     <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
     <li *ngIf="userDetails.userType == 0">

@@ -1,1 +1,61 @@
-<p>manage-requisition works!</p>
+<h2>Requisition Management</h2><br/>
+
+<div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="border-radius: 50px">
+
+        <ng-container matColumnDef="requisitionID">
+            <th mat-header-cell *matHeaderCellDef>Requisition Number</th>
+            <td mat-cell *matCellDef="let requisition">{{ requisition.requisitionID }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="requisitionName">
+            <th mat-header-cell *matHeaderCellDef>Requisition Name</th>
+            <td mat-cell *matCellDef="let requisition">{{ requisition.requisitionName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="siteName">
+            <th mat-header-cell *matHeaderCellDef>Site Name</th>
+            <td mat-cell *matCellDef="let requisition">{{ requisition.siteName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="reqSubmitDate">
+            <th mat-header-cell *matHeaderCellDef>Submited Date</th>
+            <td mat-cell *matCellDef="let requisition">{{ requisition.reqSubmitDate }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="approvedDate">
+            <th mat-header-cell *matHeaderCellDef>Approved Date</th>
+            <td mat-cell *matCellDef="let requisition">{{ requisition.approvedDate }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="totalAmount">
+            <th mat-header-cell *matHeaderCellDef>Total Amount</th>
+            <td mat-cell *matCellDef="let requisition">{{ requisition.totalAmount }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let requisition">{{ requisition.status }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center">
+            Action
+            </th>
+            <td mat-cell *matCellDef="let site">
+            <a
+                mat-stroked-button
+                style="color: #1125e2"
+                (click)="updateSiteDetails(site._id)"
+            >Update</a>
+            </td>
+        </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+
+</div>

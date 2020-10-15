@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { StocksService } from 'src/app/shared/stocks.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { SupplierService } from 'src/app/shared/supplier.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatPaginator } from '@angular/material/paginator';
@@ -12,71 +12,71 @@ interface APIResponse {
 }
 
 @Component({
-  selector: 'app-manage-supplier',
-  templateUrl: './manage-supplier.component.html',
-  styleUrls: ['./manage-supplier.component.css'],
+  selector: 'app-manage-stocks',
+  templateUrl: './manage-stocks.component.html',
+  styleUrls: ['./manage-stocks.component.css'],
 })
-export class ManageSupplierComponent implements OnInit {
+export class ManageStocksComponent implements OnInit {
   displayedColumns = [
-    'supId',
-    'supName',
-    'supLocation',
-    'supEmail',
-    'supTel',
+    'itemName',
+    'description',
+    'supplier',
+    'quantity',
+    'unitPrice',
     'action',
   ];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  public supId: string;
-  public supName: string;
-  public supLocation: string;
-  public supEmail: string;
-  public supTel: string;
+  public itemName: string;
+  public description: string;
+  public supplier: string;
+  public quantity: Number;
+  public unitPrice: Number;
   public _id: string;
-  public suppliers: [];
+  public items: [];
 
   constructor(
-    private supplierService: SupplierService,
+    private stocksService: StocksService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.viewAllSuppliers();
+    this.viewAllItems();
   }
 
-  viewAllSuppliers() {
-    this.supplierService.viewSuppliers().subscribe((res: APIResponse) => {
+  viewAllItems() {
+    this.stocksService.viewItems().subscribe((res: APIResponse) => {
       this.dataSource = new MatTableDataSource(res.data);
       this.dataSource.paginator = this.paginator;
     });
   }
 
-  addSupplier() {
-    this.router.navigate(['dashboard/suppliers/create']);
+  addItem() {
+    this.router.navigate(['dashboard/items/add']);
   }
 
   openDialog(_id: string) {
-    const dialogRef = this.dialog.open(DialogBoxSupDel);
+    const dialogRef = this.dialog.open(DialogBoxStockDel);
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.deleteSupDetails(_id);
+        this.deleteItem(_id);
       }
     });
   }
 
-  public deleteSupDetails(_id: String) {
-    this.supplierService.deleteSupplierById(_id).subscribe(
+  public deleteItem(_id: String) {
+    this.stocksService.deleteItemById(_id).subscribe(
       (response) => {
         console.log(response);
         this.snackBar.open('Supplier is successfully deleted', null, {
           duration: 2000,
         });
-        this.viewAllSuppliers();
+        this.viewAllItems();
       },
       (err) => {
         //error msg
@@ -87,19 +87,19 @@ export class ManageSupplierComponent implements OnInit {
     );
   }
 
-  updateSupDetails(id: String) {
-    this.router.navigate(['dashboard/suppliers/create'], {
+  updateItem(id: String) {
+    this.router.navigate(['dashboard/items/add'], {
       queryParams: { id },
     });
   }
 }
 
 @Component({
-  selector: 'dialogBoxSupDel',
-  templateUrl: 'dialogBoxSupDel.html',
+  selector: 'dialogBoxStockDel',
+  templateUrl: 'dialogBoxStockDel.html',
 })
-export class DialogBoxSupDel {
+export class DialogBoxStockDel {
   constructor() {}
 
-  public deleteSupDetails() {}
+  public deleteItem() {}
 }
