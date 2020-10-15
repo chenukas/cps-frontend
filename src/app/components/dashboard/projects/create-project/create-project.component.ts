@@ -36,7 +36,7 @@ export class CreateProjectComponent implements OnInit {
   ngOnInit(): void {
     this.viewAllUsers();
 
-    this.siteNo = 'S2020_';
+    this.siteNo = '';
     this.siteName = '';
     this.siteManagerName = '';
     this.location = '';
@@ -55,7 +55,8 @@ export class CreateProjectComponent implements OnInit {
             this.budget = res.data.budget;
             this.isOnUpdate = true;
           });
-      }
+      } else this.isOnUpdate = false;
+      this.generateNextSiteNo();
     });
   }
 
@@ -63,6 +64,12 @@ export class CreateProjectComponent implements OnInit {
   viewAllUsers() {
     this.usersService.getAllUsers().subscribe((res: { data: any }) => {
       this.users = res.data;
+    });
+  }
+
+  generateNextSiteNo() {
+    this.sitesService.getNextSiteNo().subscribe((res: { data: any }) => {
+      this.siteNo = res.data;
     });
   }
 
@@ -92,7 +99,7 @@ export class CreateProjectComponent implements OnInit {
   }
 
   clear() {
-    this.siteNo = 'S2020_';
+    this.siteNo = '';
     this.siteName = '';
     this.siteManagerName = '';
     this.location = '';
