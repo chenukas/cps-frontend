@@ -9,7 +9,8 @@
     + New Site
   </button>
 </div>
-
+<br />
+<br />
 <div>
   <table
     mat-table
@@ -50,16 +51,17 @@
       </th>
       <td mat-cell *matCellDef="let site">
         <a
-          mat-stroked-button
-          style="color: #1125e2"
+          mat-raised-button
+          style="background-color: #ffbf00; color: white; float: right"
           (click)="updateSiteDetails(site._id)"
           >Update</a
         >
         <a
-          mat-stroked-button
-          style="color: #ec0c0c"
+          mat-raised-button
+          color="warn"
+          style="margin-right: 20px; float: right"
           (click)="openDialog(site._id)"
-          >Delete</a
+          >Remove</a
         >
       </td>
     </ng-container>
