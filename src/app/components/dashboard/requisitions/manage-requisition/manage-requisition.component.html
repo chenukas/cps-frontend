@@ -42,12 +42,12 @@
             <th mat-header-cell *matHeaderCellDef style="text-align: center">
             Action
             </th>
-            <td mat-cell *matCellDef="let site">
+            <td mat-cell *matCellDef="let requisition">
             <a
                 mat-stroked-button
                 style="color: #1125e2"
-                (click)="updateSiteDetails(site._id)"
-            >Update</a>
+                (click)="updateStatusById(requisition._id)"
+            >Change Status</a>
             </td>
         </ng-container>
 
