@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/shared/user.service';
+import { SitesService } from 'src/app/shared/sites.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -12,14 +13,25 @@ import { Router } from '@angular/router';
 export class CreateProfileComponent implements OnInit {
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   showSucessMessage: boolean;
+  public sites: [];
 
   constructor(
     public userService: UserService,
+    private sitesService: SitesService,
     private snackbar: MatSnackBar,
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadSitesList();
+  }
+
+  loadSitesList() {
+    this.sitesService.viewSites().subscribe((res: { data: any }) => {
+      this.sites = res.data;
+      console.log(this.sites);
+    });
+  }
 
   onSubmit(form: NgForm) {
     this.userService.postUser(form.value).subscribe(
@@ -51,6 +63,7 @@ export class CreateProfileComponent implements OnInit {
       address: '',
       telephone: '',
       userType: '',
+      site: '',
       email: '',
       password: '',
     };

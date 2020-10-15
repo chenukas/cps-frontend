@@ -1,4 +1,4 @@
-<h4 class="topic">+ New user</h4>
+<h2>Profile Management - Add User Details</h2>
 <form
   #signUpForm="ngForm"
   (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)"
@@ -18,6 +18,25 @@
             <mat-option value="0">Administrator/Management</mat-option>
             <mat-option value="1">Procurement/Accounting Staff</mat-option>
             <mat-option value="2">Site Manager</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-row" *ngIf="userService.selectedUser.userType == '2'">
+      <div class="col-md-12 col-sm-12">
+        <mat-form-field appearance="outline" class="lwidth">
+          <mat-label>Site</mat-label>
+          <mat-select
+            #site="ngModel"
+            [(ngModel)]="userService.selectedUser.site"
+            name="site"
+            style="color: #999"
+            required
+          >
+            <mat-option value="{{ site._id }}" *ngFor="let site of sites"
+              >{{ site.siteName }} - {{ site.location }}</mat-option
+            >
           </mat-select>
         </mat-form-field>
       </div>

@@ -12,6 +12,7 @@ export class UserService {
     address: '',
     telephone: '',
     userType: '',
+    site: '',
     email: '',
     password: '',
   };
