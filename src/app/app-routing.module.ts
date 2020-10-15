@@ -19,6 +19,7 @@ import { PaymentsComponent } from './components/dashboard/payments/payments.comp
 import { StocksComponent } from './components/dashboard/stocks/stocks.component';
 import { AddStocksComponent } from './components/dashboard/stocks/add-stocks/add-stocks.component';
 import { ManageStocksComponent } from './components/dashboard/stocks/manage-stocks/manage-stocks.component';
+import { ViewRequisitionComponent } from './components/dashboard/requisitions/view-requisition/view-requisition.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -34,7 +35,10 @@ const routes: Routes = [
       {
         path: 'requisitions',
         component: RequisitionsComponent,
-        children: [{ path: 'manage', component: ManageRequisitionComponent }],
+        children: [
+          { path: 'manage', component: ManageRequisitionComponent },
+          { path: 'view', component: ViewRequisitionComponent },
+        ],
       },
       {
         path: 'projects',

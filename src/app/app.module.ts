@@ -43,6 +43,7 @@ import {
   ManageStocksComponent,
   DialogBoxStockDel,
 } from './components/dashboard/stocks/manage-stocks/manage-stocks.component';
+import { ViewRequisitionComponent } from './components/dashboard/requisitions/view-requisition/view-requisition.component';
 
 @NgModule({
   entryComponents: [
@@ -76,6 +77,7 @@ import {
     AddStocksComponent,
     ManageStocksComponent,
     DialogBoxStockDel,
+    ViewRequisitionComponent,
   ],
   imports: [
     BrowserModule,

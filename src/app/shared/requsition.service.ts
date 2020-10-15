@@ -3,28 +3,23 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class RequisitionsService {
+  constructor(private http: HttpClient) {}
 
-    constructor(
-        private http: HttpClient
-    ) { }
+  public viewRequisitions() {
+    return this.http.get(`${environment.apiHost}/requisitions`);
+  }
 
-    public viewRequisition(){
-        this.http.get(`${environment.apiHost}/Requisitions`);
-    }
+  public viewRequisitionById(id) {
+    return this.http.get(`${environment.apiHost}/requisitions/${id}`);
+  }
 
-    public viewRequisitionById(id){
-        this.http.get(`${environment.apiHost}/Requisitions/${id}`);
-    }
-
-    public updateRequisitionById(id: string, requisition) {
-        this.http.put(`${environment.apiHost}/Requisitions/${id}`, requisition);
-    }
-
-    public updateStatusById(id: string, requisition) {
-        this.http.put(`${environment.apiHost}/Requisitions/${id}`, requisition);
-    }
+  public approveRequisitionById(id: string, requisition) {
+    return this.http.put(
+      `${environment.apiHost}/requisitions/${id}`,
+      requisition
+    );
+  }
 }

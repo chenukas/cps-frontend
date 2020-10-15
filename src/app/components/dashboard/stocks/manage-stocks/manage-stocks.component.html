@@ -34,15 +34,19 @@
     </ng-container>
 
     <ng-container matColumnDef="quantity">
-      <th mat-header-cell *matHeaderCellDef>Qty.</th>
-      <td mat-cell *matCellDef="let item">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">Qty.</th>
+      <td mat-cell *matCellDef="let item" style="text-align: right">
         {{ item.quantity }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="unitPrice">
-      <th mat-header-cell *matHeaderCellDef>Unit Price</th>
-      <td mat-cell *matCellDef="let item">{{ item.unitPrice }}</td>
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">
+        Unit Price
+      </th>
+      <td mat-cell *matCellDef="let item" style="text-align: right">
+        {{ item.unitPrice | currency: "LKR" }}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="action">
