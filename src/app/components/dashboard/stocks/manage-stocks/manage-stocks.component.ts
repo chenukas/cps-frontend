@@ -73,7 +73,7 @@ export class ManageStocksComponent implements OnInit {
     this.stocksService.deleteItemById(_id).subscribe(
       (response) => {
         console.log(response);
-        this.snackBar.open('Supplier is successfully deleted', null, {
+        this.snackBar.open('Item is successfully deleted', null, {
           duration: 2000,
         });
         this.viewAllItems();
