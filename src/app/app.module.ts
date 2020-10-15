@@ -32,6 +32,7 @@ import { SuppliersComponent } from './components/dashboard/suppliers/suppliers.c
 import { CreateSupplierComponent } from './components/dashboard/suppliers/create-supplier/create-supplier.component';
 import { ManageSupplierComponent } from './components/dashboard/suppliers/manage-supplier/manage-supplier.component';
 import { PaymentsComponent } from './components/dashboard/payments/payments.component';
+import { ManageOrderComponent } from './components/dashboard/orders/manage-order/manage-order.component';
 
 @NgModule({
   entryComponents: [DialogBoxUserDel],
@@ -55,6 +56,7 @@ import { PaymentsComponent } from './components/dashboard/payments/payments.comp
     ManageSupplierComponent,
     PaymentsComponent,
     DialogBoxUserDel,
+    ManageOrderComponent,
   ],
   imports: [
     BrowserModule,
