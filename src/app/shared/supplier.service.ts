@@ -8,6 +8,10 @@ import { environment } from '../../environments/environment';
 export class SupplierService {
   constructor(private http: HttpClient) {}
 
+  public getNextSupNo() {
+    return this.http.get(`${environment.apiHost}/getSupNumber`);
+  }
+
   public addSupplier(supId, supName, supLocation, supEmail, supTel) {
     return this.http.post(`${environment.apiHost}/suppliers`, {
       supId,
