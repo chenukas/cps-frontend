@@ -47,6 +47,10 @@ export class UserService {
     return this.http.get(environment.apiHost + '/users');
   }
 
+  getSiteManagers() {
+    return this.http.get(environment.apiHost + '/sitemanagers');
+  }
+
   deleteUserById(id: string) {
     return this.http.delete(environment.apiHost + '/users/' + id);
   }
