@@ -1,1 +1,28 @@
-<p>overview works!</p>
+<div class="col-md-6">
+  <mat-card class="chart-card" style="margin-right: 46px">
+    <mat-card-header>
+      <mat-card-title>Requisitions</mat-card-title>
+      <mat-card-subtitle
+        >Currently submitted Requisitions filtered by Status</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="chart-wrapper">
+            <canvas
+              baseChart
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="pieChartType"
+              [options]="pieChartOptions"
+              [plugins]="pieChartPlugins"
+              [legend]="pieChartLegend"
+            >
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
