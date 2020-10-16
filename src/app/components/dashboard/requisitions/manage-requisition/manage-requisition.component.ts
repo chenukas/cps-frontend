@@ -59,4 +59,10 @@ export class ManageRequisitionComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     });
   }
+
+  viewRequisitionById(id: string) {
+    this.router.navigate(['dashboard/requisitions/view'], {
+      queryParams: { id },
+    });
+  }
 }

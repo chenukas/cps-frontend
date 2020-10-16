@@ -42,17 +42,17 @@
           data-toggle="dropdown"
           class="nav-link dropdown-toggle user-action"
           ><img src="assets/images/user.jpg" class="avatar" alt="Avatar" />
-          {{ userDetails.fullName }}<b class="caret"></b
+          {{ this.displayName }}<b class="caret"></b
         ></a>
         <div class="dropdown-menu">
           <a href="#" class="dropdown-item"
-            ><i class="fa fa-envelope"></i> {{ userDetails.email }}</a
+            ><i class="fa fa-envelope"></i> {{ this.displayEmail }}</a
           >
           <a href="#" class="dropdown-item"
-            ><i class="fa fa-globe"></i> {{ userDetails.address }}</a
+            ><i class="fa fa-globe"></i> {{ this.displayAddress }}</a
           >
           <a href="#" class="dropdown-item"
-            ><i class="fa fa-phone-square"></i> {{ userDetails.telephone }}</a
+            ><i class="fa fa-phone-square"></i> {{ this.displayTelephone }}</a
           >
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item" (click)="onLogout()"
@@ -79,7 +79,7 @@
       <a [routerLink]="['overview']">Overview</a>
     </li>
     <mat-divider></mat-divider>
-    <li *ngIf="userDetails.userType == 0">
+    <li *ngIf="this.displayUserType == '0' || this.displayUserType == '1'">
       <a [routerLink]="['requisitions/manage']">Requisitions</a>
     </li>
 
@@ -99,7 +99,7 @@
       </ul>
     </li>
 
-    <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
+    <mat-divider></mat-divider>
     <li>
       <a
         href="#paySubmenu"
@@ -114,20 +114,22 @@
         </li>
       </ul>
     </li>
-    <mat-divider></mat-divider>
-    <li *ngIf="userDetails.userType == 0">
+    <mat-divider
+      *ngIf="this.displayUserType == '0' || this.displayUserType == '1'"
+    ></mat-divider>
+    <li *ngIf="this.displayUserType == '0' || this.displayUserType == '1'">
       <a [routerLink]="['items/manage']">Stocks</a>
     </li>
-    <mat-divider></mat-divider>
-    <li *ngIf="userDetails.userType == 0">
+    <mat-divider *ngIf="this.displayUserType == '0'"></mat-divider>
+    <li *ngIf="this.displayUserType == '0'">
       <a [routerLink]="['suppliers/manage']">Suppliers</a>
     </li>
-    <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
-    <li *ngIf="userDetails.userType == 0">
+    <mat-divider *ngIf="this.displayUserType == '0'"></mat-divider>
+    <li *ngIf="this.displayUserType == '0'">
       <a [routerLink]="['projects/manage']">Projects/Sites</a>
     </li>
-    <mat-divider *ngIf="userDetails.userType == 0"></mat-divider>
-    <li *ngIf="userDetails.userType == 0">
+    <mat-divider *ngIf="this.displayUserType == '0'"></mat-divider>
+    <li *ngIf="this.displayUserType == '0'">
       <a [routerLink]="['profiles/manage']">Profiles</a>
     </li>
   </ul>
