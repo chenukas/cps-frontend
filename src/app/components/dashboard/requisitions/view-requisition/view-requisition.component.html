@@ -1,0 +1,74 @@
+<h2>
+  <strong>{{ this.requisitionID }}</strong> |
+
+  {{ this.siteName }}
+</h2>
+<p>
+  by <strong> {{ this.siteManagerName }}</strong>
+</p>
+<p>
+  requested on <strong>{{ this.requestDate }}</strong>
+</p>
+<hr />
+<h4>
+  <strong>{{ this.suppName }}</strong>
+</h4>
+<br />
+<div style="width: 50%; text-align: center">
+  <h5>List of Items</h5>
+</div>
+
+<div>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    style="border-radius: 50px"
+  >
+    <ng-container matColumnDef="productName">
+      <th mat-header-cell *matHeaderCellDef>Product Name</th>
+      <td mat-cell *matCellDef="let item">
+        {{ item.productId.itemName }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="qty">
+      <th mat-header-cell *matHeaderCellDef>Qty.</th>
+      <td mat-cell *matCellDef="let item">
+        {{ item.quantity }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="unitPrice">
+      <th mat-header-cell *matHeaderCellDef>Unit Price</th>
+      <td mat-cell *matCellDef="let item" style="text-align: right">
+        {{ item.productId.unitPrice | currency: "LKR" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="subTot">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">
+        Sub Total
+      </th>
+      <td mat-cell *matCellDef="let item" style="text-align: right">
+        {{ item.quantity * item.productId.unitPrice | currency: "LKR" }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+<br />
+<div style="width: 50%">
+  <h5 style="text-align: right; margin-right: 20px">
+    <strong>Total</strong>
+    {{ this.totalAmount | currency: "LKR" }}
+  </h5>
+  <h5 style="text-align: right; margin-right: 20px">
+    <strong>Budget</strong>
+    {{ this.budget | currency: "LKR" }}
+  </h5>
+
+  <p><strong>Status </strong>{{ this.status }}</p>
+</div>

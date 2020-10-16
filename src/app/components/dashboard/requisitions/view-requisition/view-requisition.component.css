@@ -4,15 +4,6 @@ h2 {
   text-align: left;
 }
 
-mat-form-field {
-  font-size: 14px;
-  width: 100%;
-}
-
-h4 {
-  color: #000;
-}
-
 table {
-  width: 100%;
+  width: 50%;
 }

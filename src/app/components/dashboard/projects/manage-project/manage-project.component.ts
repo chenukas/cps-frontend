@@ -76,7 +76,7 @@ export class ManageProjectComponent implements OnInit {
     this.siteService.deleteSiteById(_id).subscribe(
       (response) => {
         console.log(response);
-        this.snackBar.open('Site Details Are Successfully Deleted', null, {
+        this.snackBar.open('Site details are successfully deleted', null, {
           duration: 2000,
         });
         this.viewAllSites();

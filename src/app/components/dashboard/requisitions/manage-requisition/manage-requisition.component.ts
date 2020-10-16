@@ -12,18 +12,16 @@ interface APIResponse {
 @Component({
   selector: 'app-manage-requisition',
   templateUrl: './manage-requisition.component.html',
-  styleUrls: ['./manage-requisition.component.css']
+  styleUrls: ['./manage-requisition.component.css'],
 })
 export class ManageRequisitionComponent implements OnInit {
-
   displayedColumns = [
     'requisitionID',
-    'requisitionName',
-    'siteName',
-    'reqSubmitDate',
-    'approvedDate',
+    'siteId',
+    'requestDate',
     'totalAmount',
     'status',
+    'approvedDate',
     'action',
   ];
   dataSource = new MatTableDataSource();
@@ -32,16 +30,16 @@ export class ManageRequisitionComponent implements OnInit {
 
   public requisitions: [];
   public requisitionID: string;
-  public requisitionName: string;
-  public siteName: string;
+
+  public siteManagerId: string;
+  public requestDate: string;
+  public requireDate: string;
   public siteId: string;
-  public siteManagerName: string;
-  public requiredItems: string;
-  public ItemsQty: string;
+  public supplierName: string;
+  public items: [];
   public totalAmount: number;
   public totalBudget: number;
   public approvedDate: Date;
-  public reqSubmitDate : Date;
   public comments: string;
   public status: string;
   public _id: string;
@@ -49,14 +47,22 @@ export class ManageRequisitionComponent implements OnInit {
   constructor(
     private router: Router,
     private requisitionService: RequisitionsService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.viewAllRequisitions();
   }
 
-  viewAllRequisitions(){
-    this.requisitionService.viewRequisition()
+  viewAllRequisitions() {
+    this.requisitionService.viewRequisitions().subscribe((res: APIResponse) => {
+      this.dataSource = new MatTableDataSource(res.data);
+      this.dataSource.paginator = this.paginator;
+    });
   }
 
+  viewRequisitionById(id: string) {
+    this.router.navigate(['dashboard/requisitions/view'], {
+      queryParams: { id },
+    });
+  }
 }
