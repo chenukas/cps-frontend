@@ -34,7 +34,7 @@ export class CreateProjectComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.viewAllUsers();
+    this.viewSiteManagersList();
 
     this.siteNo = '';
     this.siteName = '';
@@ -61,8 +61,8 @@ export class CreateProjectComponent implements OnInit {
   }
 
   //load user details
-  viewAllUsers() {
-    this.usersService.getAllUsers().subscribe((res: { data: any }) => {
+  viewSiteManagersList() {
+    this.usersService.getSiteManagers().subscribe((res: { data: any }) => {
       this.users = res.data;
     });
   }
