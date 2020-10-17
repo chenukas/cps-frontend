@@ -1,0 +1,8 @@
+<mat-dialog-content class="mat-typography">
+    <h4>Are you sure that Order no.{{data.orderID}} is delivered? </h4>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">Yes</button>
+</mat-dialog-actions>

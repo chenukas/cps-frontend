@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-xl navbar-light bg-light">
+<nav class="navbar navbar-expand-xl navbar-light bg-light" style="background-color: #504f4f">
   <a href="#" class="navbar-brand"
     ><i class="fa fa-cube"></i>Brand<b>Name</b></a
   >
@@ -22,7 +22,7 @@
           type="text"
           id="search"
           class="form-control"
-          placeholder="Search here..."
+          placeholder="Search"
         />
         <span class="input-group-addon"
           ><i class="material-icons">&#xE8B6;</i></span
@@ -95,6 +95,7 @@
       <ul class="collapse list-unstyled" id="orderSubmenu">
         <li>
           <a [routerLink]="['orders']">Create</a>
+          <a [routerLink]="['orders/manage']">Manage</a>
         </li>
       </ul>
     </li>
