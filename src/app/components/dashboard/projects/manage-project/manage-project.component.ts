@@ -28,6 +28,8 @@ export class ManageProjectComponent implements OnInit {
   public budget: number;
   public _id: string;
   public sites: [];
+  public siteNames: any;
+  public budgets: [];
 
   constructor(
     private siteService: SitesService,

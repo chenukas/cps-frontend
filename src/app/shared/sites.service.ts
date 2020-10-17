@@ -36,4 +36,8 @@ export class SitesService {
   public deleteSiteById(id) {
     return this.http.delete(`${environment.apiHost}/sites/${id}`);
   }
+
+  public updateBudget(id: string, site) {
+    return this.http.put(`${environment.apiHost}/sites/${id}/budget`, site);
+  }
 }
