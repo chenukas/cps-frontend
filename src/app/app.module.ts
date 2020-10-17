@@ -37,6 +37,7 @@ import {
   DialogBoxSupDel,
 } from './components/dashboard/suppliers/manage-supplier/manage-supplier.component';
 import { PaymentsComponent } from './components/dashboard/payments/payments.component';
+import { ManageOrderComponent, DialogBox } from './components/dashboard/orders/manage-order/manage-order.component';
 import { StocksComponent } from './components/dashboard/stocks/stocks.component';
 import { AddStocksComponent } from './components/dashboard/stocks/add-stocks/add-stocks.component';
 import {
@@ -53,6 +54,7 @@ import { ChartsModule } from 'ng2-charts';
     DialogBoxSiteDel,
     DialogBoxSupDel,
     DialogBoxStockDel,
+    DialogBox
   ],
   declarations: [
     AppComponent,
@@ -73,6 +75,7 @@ import { ChartsModule } from 'ng2-charts';
     ManageSupplierComponent,
     PaymentsComponent,
     DialogBoxUserDel,
+    ManageOrderComponent,
     DialogBoxSiteDel,
     DialogBoxSupDel,
     StocksComponent,
@@ -80,6 +83,7 @@ import { ChartsModule } from 'ng2-charts';
     ManageStocksComponent,
     DialogBoxStockDel,
     ViewRequisitionComponent,
+    DialogBox
   ],
   imports: [
     BrowserModule,
