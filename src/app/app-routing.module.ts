@@ -61,10 +61,7 @@ const routes: Routes = [
       {
         path: 'orders',
         component: OrdersComponent,
-        children: [
-          // { path: 'create', component: CreateOrd },
-          { path: 'manage', component: ManageOrderComponent },
-        ]
+        children: [{ path: 'manage', component: ManageOrderComponent }],
       },
       {
         path: 'items',

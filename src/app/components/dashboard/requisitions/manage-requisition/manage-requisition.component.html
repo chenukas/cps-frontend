@@ -44,7 +44,13 @@
         Status
       </th>
       <td mat-cell *matCellDef="let requisition" style="text-align: center">
-        {{ requisition.status }}
+        <span
+          class="badge"
+          [class.badge-secondary]="requisition.status == 'Pending'"
+          [class.badge-success]="requisition.status === 'Approved'"
+          [class.badge-danger]="requisition.status === 'Declined'"
+          >{{ requisition.status | titlecase }}</span
+        >
       </td>
     </ng-container>
 

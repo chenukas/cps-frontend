@@ -1,4 +1,7 @@
-<nav class="navbar navbar-expand-xl navbar-light bg-light" style="background-color: #504f4f">
+<nav
+  class="navbar navbar-expand-xl navbar-light bg-light"
+  style="background-color: #504f4f"
+>
   <a href="#" class="navbar-brand"
     ><i class="fa fa-cube"></i>Brand<b>Name</b></a
   >
@@ -83,37 +86,19 @@
       <a [routerLink]="['requisitions/manage']">Requisitions</a>
     </li>
 
-    <mat-divider></mat-divider>
-    <li>
-      <a
-        href="#orderSubmenu"
-        data-toggle="collapse"
-        aria-expanded="false"
-        class="dropdown-toggle"
-        >Orders</a
-      >
-      <ul class="collapse list-unstyled" id="orderSubmenu">
-        <li>
-          <a [routerLink]="['orders']">Create</a>
-          <a [routerLink]="['orders/manage']">Manage</a>
-        </li>
-      </ul>
+    <mat-divider
+      *ngIf="this.displayUserType == '0' || this.displayUserType == '1'"
+    ></mat-divider>
+
+    <li *ngIf="this.displayUserType == '0' || this.displayUserType == '1'">
+      <a [routerLink]="['orders/manage']">Orders</a>
     </li>
 
-    <mat-divider></mat-divider>
-    <li>
-      <a
-        href="#paySubmenu"
-        data-toggle="collapse"
-        aria-expanded="false"
-        class="dropdown-toggle"
-        >Payments</a
-      >
-      <ul class="collapse list-unstyled" id="paySubmenu">
-        <li>
-          <a [routerLink]="['payments']">Create</a>
-        </li>
-      </ul>
+    <mat-divider
+      *ngIf="this.displayUserType == '0' || this.displayUserType == '1'"
+    ></mat-divider>
+    <li *ngIf="this.displayUserType == '0' || this.displayUserType == '1'">
+      <a [routerLink]="['payments']">Payments</a>
     </li>
     <mat-divider
       *ngIf="this.displayUserType == '0' || this.displayUserType == '1'"
