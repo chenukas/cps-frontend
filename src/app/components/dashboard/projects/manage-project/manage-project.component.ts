@@ -27,9 +27,6 @@ export class ManageProjectComponent implements OnInit {
   public location: string;
   public budget: number;
   public _id: string;
-  public sites: [];
-  public siteNames: any;
-  public budgets: [];
 
   constructor(
     private siteService: SitesService,
@@ -46,6 +43,7 @@ export class ManageProjectComponent implements OnInit {
     this.siteService.viewSites().subscribe((res: APIResponse) => {
       this.dataSource = new MatTableDataSource(res.data);
       this.dataSource.paginator = this.paginator;
+      //console.log(res.data);
     });
   }
 
