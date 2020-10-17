@@ -4,40 +4,41 @@
 <div class="list mat-elevation-z8">
   <app-loader *ngIf="isLoading"></app-loader>
   <table mat-table [dataSource]="dataSource" *ngIf="!isLoading">
-    <!-- RegNo Column -->
+    <!-- order Column -->
     <ng-container matColumnDef="no">
-      <th mat-header-cell *matHeaderCellDef><b> No. </b></th>
-      <!-- <td mat-cell *matCellDef="le50'/t student">{{ student.admissionNumber }}</td> -->
+      <th mat-header-cell *matHeaderCellDef><b> Order no. </b></th>
+      <td mat-cell *matCellDef="let orders">{{ orders.orderID }}</td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef><b> Name </b></th>
-        <!-- <td mat-cell *matCellDef="let student"> {{ student.fname }}</td> -->
+    <!-- requisition Column -->
+    <ng-container matColumnDef="requisition">
+      <th mat-header-cell *matHeaderCellDef><b> Requisition no. </b></th>
+      <td mat-cell *matCellDef="let orders"> {{ orders.requisitions && orders.requisitions.requisitionID }}</td>
     </ng-container>
 
-    <!-- Class Column -->
-    <ng-container matColumnDef="class">
-      <th mat-header-cell *matHeaderCellDef><b> Class </b></th>
-      <!-- <td mat-cell *matCellDef="let student"> {{ student.class }} </td> -->
+    <!-- site Column -->
+    <ng-container matColumnDef="site">
+      <th mat-header-cell *matHeaderCellDef><b> Site </b></th>
+      <td mat-cell *matCellDef="let orders"> {{ orders.requisitions.siteId.siteNo }} </td>
     </ng-container>
 
-    <!-- Email Column -->
-    <ng-container matColumnDef="mail">
-      <th mat-header-cell *matHeaderCellDef><b> Email </b></th>
-      <!-- <td mat-cell *matCellDef="let student">{{ student.mail }}</td> -->
+    <!-- supplier Column -->
+    <ng-container matColumnDef="supplier">
+      <th mat-header-cell *matHeaderCellDef><b> Supplier </b></th>
+      <td mat-cell *matCellDef="let orders">{{ orders.requisitions.supplierName.supName }}</td>
+    </ng-container>
+
+    <!-- total Column -->
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef><b> Total </b></th>
+      <td mat-cell *matCellDef="let orders">{{ orders.requisitions && orders.requisitions.totalAmount }}</td>
     </ng-container>
 
     <!-- Action Column -->
     <ng-container matColumnDef="state">
       <th mat-header-cell *matHeaderCellDef><b> State </b></th>
-      <td mat-cell *matCellDef="let student">
-        <a
-          mat-stroked-button
-          color="primary"
-          (click)="updateStudent(student._id)"
-          >{{database}}</a
-        >
+      <td mat-cell *matCellDef="let orders">
+        <a mat-stroked-button color="primary" (click)="updateorders(orders._id)">{{orders.status}}</a>
       </td>
     </ng-container>
 
@@ -45,10 +46,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 </div>
-<!-- <div class="paginate">
-  <mat-paginator
-    [pageSizeOptions]="[5, 10, 20]"
-    (page)="changePage($event)"
-    [length]="count"
-  ></mat-paginator>
-</div> -->
+<div class="paginate">
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" (page)="changePage($event)" [length]="count"></mat-paginator>
+</div>

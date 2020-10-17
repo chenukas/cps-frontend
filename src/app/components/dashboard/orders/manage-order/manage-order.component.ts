@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
-// import { OrderService } from "src/app/services/order.service";
+import { OrderService } from "src/app/shared/order.service";
 import { Router } from "@angular/router";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSnackBar } from "@angular/material/snack-bar";
@@ -15,9 +15,9 @@ import { EventEmitter } from 'protractor';
   styleUrls: ['./manage-order.component.css']
 })
 export class ManageOrderComponent implements OnInit {
-  displayedColumns: string[] = ["id", "name", "class", "mail", "action"];
+  displayedColumns: string[] = ["no", "requisition", "site", "supplier", "total", "state"];
   dataSource: MatTableDataSource<any>;
-  students;
+  order;
   dataIsLoaded = false;
   private filters: {
     limit: number,
@@ -27,42 +27,24 @@ export class ManageOrderComponent implements OnInit {
   isLoading: boolean;
 
   constructor(
-    private studentService: orderService,
+    private orderService: OrderService,
     private snackbar: MatSnackBar,
     private router: Router,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit() {
-    // this.filters = { limit: 5, page: 0 };
-    this.viewStudents(this.filters.page, this.filters.limit);
+    this.filters = { limit: 5, page: 0 };
+    this.viewOrder(this.filters.page, this.filters.limit);
   }
 
-  // changePage($event) {
-  //   this.filters = {
-  //     page: $event.pageIndex,
-  //     limit: $event.pageSize
-  //   };
-  //   this.viewStudents($event.pageIndex, $event.pageSize);
-  // }
-
-  //   ngAfterViewInit() {
-  //     this.paginator.page
-  //         .pipe(
-  //             tap(() => this.loadPage())
-  //         )
-  //         .subscribe();
-  // }
-
-  // loadPage() {
-  //     this.dataSource(
-  //         this.studentService.getStudentId._id,
-  //         '',
-  //         'asc',
-  //         this.paginator.pageIndex,
-  //         this.paginator.pageSize);
-  // }
-
+  changePage($event) {
+    this.filters = {
+      page: $event.pageIndex,
+      limit: $event.pageSize
+    };
+    this.viewOrder($event.pageIndex, $event.pageSize);
+  }
 
   //search
 
@@ -70,14 +52,14 @@ export class ManageOrderComponent implements OnInit {
   //   this.dataSource.filter = keyword.trim().toLowerCase();
   // }
 
-  viewStudents(page: number, limit: number) {
+  viewOrder(page: number, limit: number) {
     this.isLoading = true;
-    this.orderService.viewStudents(page, limit).subscribe(
+    this.orderService.viewOrder(page, limit).subscribe(
       (res: any) => {
         this.dataSource = new MatTableDataSource(res.data);
         this.count = res.count;
         this.dataIsLoaded = true;
-        this.students = res.data;
+        this.order = res.data;
         this.isLoading = false;
       },
       (err) => {
@@ -86,31 +68,25 @@ export class ManageOrderComponent implements OnInit {
     );
   }
 
-  /**
-   * viewDetails
-   */
-  public viewDetails(id: string) {
-    this.router.navigate(["dashboard/student/view"], { queryParams: { id } });
-  }
-
-  openDialog(_id: string, fname: string, lname: string) {
+  //alert
+  openDialog(_id: string, orderID: string) {
     const dialogRef = this.dialog.open(DialogBox, {
-      data: { _id, fname, lname },
+      data: { _id, orderID },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.unenroll(_id);
+        this.changeState(_id);
       }
     });
   }
 
-  public unenroll(_id: string) {
-    this.orderService.unenrollStudent(_id).subscribe(
+  public changeState(_id: string) {
+    this.orderService.changeOrderState(_id).subscribe(
       (res) => {
-        this.viewStudents(this.filters.page, this.filters.limit);
+        this.viewOrder(this.filters.page, this.filters.limit);
         //notify
-        this.snackbar.open("Unenrolled successfully!", "", { duration: 2000 });
+        this.snackbar.open("Changed state", "", { duration: 2000 });
       },
       (err) => {
         //error msg
@@ -121,11 +97,6 @@ export class ManageOrderComponent implements OnInit {
     );
   }
 
-  // public toPDF(studentId: string) {
-  //   this.studentService.getPdf([studentId]).subscribe((response: APIResponse) => {
-  //     window.open(response.data.filename, '_blank');
-  //   });
-  // }
 }
 
 @Component({
@@ -135,8 +106,8 @@ export class ManageOrderComponent implements OnInit {
 export class DialogBox {
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public data: { _id: string; fname: string; lname: string }
-  ) {}
+    public data: { _id: string; orderID: string; }
+  ) { }
 
-  public unenroll() {}
+  public unenroll() { }
 }
