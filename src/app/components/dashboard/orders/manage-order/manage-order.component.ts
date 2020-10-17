@@ -15,7 +15,7 @@ import { EventEmitter } from 'protractor';
   styleUrls: ['./manage-order.component.css']
 })
 export class ManageOrderComponent implements OnInit {
-  displayedColumns: string[] = ["no", "requisition", "site", "supplier", "total", "state"];
+  displayedColumns: string[] = ["no", "requisition", "site", "supplier", "total", "state", "actions"];
   dataSource: MatTableDataSource<any>;
   order;
   dataIsLoaded = false;
@@ -54,8 +54,9 @@ export class ManageOrderComponent implements OnInit {
 
   viewOrder(page: number, limit: number) {
     this.isLoading = true;
-    this.orderService.viewOrder(page, limit).subscribe(
+    this.orderService.viewOrder().subscribe(
       (res: any) => {
+        console.log(res.data);
         this.dataSource = new MatTableDataSource(res.data);
         this.count = res.count;
         this.dataIsLoaded = true;

@@ -22,6 +22,7 @@ import { ManageStocksComponent } from './components/dashboard/stocks/manage-stoc
 import { ViewRequisitionComponent } from './components/dashboard/requisitions/view-requisition/view-requisition.component';
 
 import { AuthGuard } from './auth/auth.guard';
+import { ManageOrderComponent } from './components/dashboard/orders/manage-order/manage-order.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -60,6 +61,10 @@ const routes: Routes = [
       {
         path: 'orders',
         component: OrdersComponent,
+        children: [
+          // { path: 'create', component: CreateOrd },
+          { path: 'manage', component: ManageOrderComponent },
+        ]
       },
       {
         path: 'items',

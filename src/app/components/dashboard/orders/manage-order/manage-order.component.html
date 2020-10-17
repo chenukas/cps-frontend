@@ -13,32 +13,39 @@
     <!-- requisition Column -->
     <ng-container matColumnDef="requisition">
       <th mat-header-cell *matHeaderCellDef><b> Requisition no. </b></th>
-      <td mat-cell *matCellDef="let orders"> {{ orders.requisitions && orders.requisitions.requisitionID }}</td>
+      <td mat-cell *matCellDef="let orders"> {{ orders.requisitionID && orders.requisitionID.requisitionID }}</td>
     </ng-container>
 
     <!-- site Column -->
     <ng-container matColumnDef="site">
       <th mat-header-cell *matHeaderCellDef><b> Site </b></th>
-      <td mat-cell *matCellDef="let orders"> {{ orders.requisitions.siteId.siteNo }} </td>
+      <td mat-cell *matCellDef="let orders"> {{ orders.requisitionID && orders.requisitionID.siteId.siteName }} </td>
     </ng-container>
 
     <!-- supplier Column -->
     <ng-container matColumnDef="supplier">
       <th mat-header-cell *matHeaderCellDef><b> Supplier </b></th>
-      <td mat-cell *matCellDef="let orders">{{ orders.requisitions.supplierName.supName }}</td>
+      <td mat-cell *matCellDef="let orders">{{ orders.requisitionID.supplierName.supName }}</td>
     </ng-container>
 
     <!-- total Column -->
     <ng-container matColumnDef="total">
       <th mat-header-cell *matHeaderCellDef><b> Total </b></th>
-      <td mat-cell *matCellDef="let orders">{{ orders.requisitions && orders.requisitions.totalAmount }}</td>
+      <td mat-cell *matCellDef="let orders">{{ orders.requisitionID && orders.requisitionID.totalAmount | currency: 'Rs. ' }}</td>
     </ng-container>
 
     <!-- Action Column -->
     <ng-container matColumnDef="state">
-      <th mat-header-cell *matHeaderCellDef><b> State </b></th>
+      <th mat-header-cell *matHeaderCellDef><b>Status</b></th>
       <td mat-cell *matCellDef="let orders">
-        <a mat-stroked-button color="primary" (click)="updateorders(orders._id)">{{orders.status}}</a>
+        <span class="badge badge-primary">{{orders.status | titlecase}}</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef><b>Actions</b></th>
+      <td mat-cell *matCellDef="let orders">
+        <button mat-flat-button color="primary">Mark as Delivered</button>
       </td>
     </ng-container>
 

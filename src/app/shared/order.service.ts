@@ -18,4 +18,8 @@ export class OrderService {
   public viewOrderById(id) {
     return this.http.get(`${environment.apiHost}/orders/${id}`);
   }
+
+  public changeOrderState(id: string) {
+    return this.http.put(`${environment.apiHost}/orders/${id}/status`, {});
+  }
 }
