@@ -44,6 +44,25 @@ export class OverviewComponent implements OnInit {
     },
   ];
 
+  public myChart;
+  public labels;
+  public values;
+
+  public barChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  public barChartLabels: Label[];
+  public barChartType: ChartType = 'bar';
+  public barChartLegend = true;
+  public barChartPlugins = [];
+
+  public barChartData: ChartDataSets[] = [
+    {
+      data: [12, 99, 35, 20, 32, 33, 56, 78, 65, 29, 92, 8],
+      label: 'Available Budgets',
+    },
+  ];
+
   constructor(
     private statisticsService: StatisticsService,
     private siteService: SitesService
@@ -71,19 +90,24 @@ export class OverviewComponent implements OnInit {
         this.pieChartData = this.requisitionsCounts;
       });
 
-    this.siteService.viewSites().subscribe((res: APIResponse) => {
-      //console.log(res.data);
-      for (let i = 0; i < res.data.length; i++) {
-        this.siteNames.push(res.data[i].siteName);
-      }
-      console.log(this.siteNames);
+    this.siteService
+      .getAllSiteNamesAndBudgets()
+      .subscribe((res: APIResponse) => {
+        console.log(res.data);
+        var stringified = JSON.stringify(res.data);
+        var json = JSON.parse(stringified);
+        //var json = JSON.parse(res.data);
 
-      for (let i = 0; i < res.data.length; i++) {
-        this.budgets.push(res.data[i].budget);
-      }
-      console.log(this.budgets);
-      //this.barChartLabels = this.siteNames;
-      //this.barChartData = this.budgets;
-    });
+        this.labels = json.map(function (e) {
+          return e.siteName;
+        });
+        console.log(this.labels);
+        this.barChartLabels = this.labels;
+
+        this.values = json.map(function (e) {
+          return e.budget / 10000; // Divide to billions in units of ten
+        });
+        console.log(this.values);
+      });
   }
 }

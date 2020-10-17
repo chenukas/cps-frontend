@@ -40,4 +40,8 @@ export class SitesService {
   public updateBudget(id: string, site) {
     return this.http.put(`${environment.apiHost}/sites/${id}/budget`, site);
   }
+
+  public getAllSiteNamesAndBudgets() {
+    return this.http.get(`${environment.apiHost}/sitestats`);
+  }
 }
