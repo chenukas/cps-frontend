@@ -1,1 +1,50 @@
-<p>payments works!</p>
+<h4 class="topic">Delivered Orders</h4>
+<br />
+
+<div class="list mat-elevation-z8">
+  <app-loader *ngIf="isLoading"></app-loader>
+  <table mat-table [dataSource]="dataSource" *ngIf="!isLoading">
+    <!-- order Column -->
+    <ng-container matColumnDef="no">
+      <th mat-header-cell *matHeaderCellDef><b> Order no. </b></th>
+      <td mat-cell *matCellDef="let orders">{{ orders.orderID }}</td>
+    </ng-container>
+
+    <!-- requisition Column -->
+    <ng-container matColumnDef="requisition">
+      <th mat-header-cell *matHeaderCellDef><b> Requisition no. </b></th>
+      <td mat-cell *matCellDef="let orders"> {{ orders.requisitionID && orders.requisitionID.requisitionID }}</td>
+    </ng-container>
+
+    <!-- site Column -->
+    <ng-container matColumnDef="site">
+      <th mat-header-cell *matHeaderCellDef><b> Site </b></th>
+      <td mat-cell *matCellDef="let orders"> {{ orders.requisitionID && orders.requisitionID.siteId.siteName }} </td>
+    </ng-container>
+
+    <!-- supplier Column -->
+    <ng-container matColumnDef="supplier">
+      <th mat-header-cell *matHeaderCellDef><b> Supplier </b></th>
+      <td mat-cell *matCellDef="let orders">{{ orders.requisitionID.supplierName.supName }}</td>
+    </ng-container>
+
+    <!-- total Column -->
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef><b> Total </b></th>
+      <td mat-cell *matCellDef="let orders">{{ orders.requisitionID && orders.requisitionID.totalAmount | currency: 'Rs. ' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef><b>Actions</b></th>
+      <td mat-cell *matCellDef="let orders">
+        <button mat-flat-button color="primary">Generate Invoice</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+<div class="paginate">
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" (page)="changePage($event)" [length]="count"></mat-paginator>
+</div>

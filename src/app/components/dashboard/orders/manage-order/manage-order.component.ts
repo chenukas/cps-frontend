@@ -5,7 +5,6 @@ import { Router } from "@angular/router";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { Subject } from 'rxjs';
 import { EventEmitter } from 'protractor';
 // import { APIResponse } from 'src/app/models/apiresponse';
 
@@ -87,7 +86,7 @@ export class ManageOrderComponent implements OnInit {
       (res) => {
         this.viewOrder(this.filters.page, this.filters.limit);
         //notify
-        this.snackbar.open("Changed state", "", { duration: 2000 });
+        this.snackbar.open("Changed to delivered!", "", { duration: 2000 });
       },
       (err) => {
         //error msg

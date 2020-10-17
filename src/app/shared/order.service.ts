@@ -22,4 +22,8 @@ export class OrderService {
   public changeOrderState(id: string) {
     return this.http.put(`${environment.apiHost}/orders/${id}/status`, {});
   }
+
+  public viewDeliveredOrders() {
+    return this.http.get(`${environment.apiHost}/orders/status`);
+  }
 }
