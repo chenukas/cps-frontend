@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SitesService } from 'src/app/shared/sites.service';
-import { UserService } from 'src/app/shared/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -19,7 +18,6 @@ export class CreateProjectComponent implements OnInit {
   public users: [];
   public siteNo: string;
   public siteName: string;
-  public siteManagerName: string;
   public location: string;
   public budget: number;
   public id: string;
@@ -29,16 +27,12 @@ export class CreateProjectComponent implements OnInit {
     private snackbar: MatSnackBar,
     private router: Router,
     private sitesService: SitesService,
-    public usersService: UserService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.viewSiteManagersList();
-
     this.siteNo = '';
     this.siteName = '';
-    this.siteManagerName = '';
     this.location = '';
     this.budget = 0.0;
 
@@ -50,20 +44,12 @@ export class CreateProjectComponent implements OnInit {
             this.id = params.id;
             this.siteNo = res.data.siteNo;
             this.siteName = res.data.siteName;
-            this.siteManagerName = res.data.siteManagerName;
             this.location = res.data.location;
             this.budget = res.data.budget;
             this.isOnUpdate = true;
           });
       } else this.isOnUpdate = false;
       this.generateNextSiteNo();
-    });
-  }
-
-  //load user details
-  viewSiteManagersList() {
-    this.usersService.getSiteManagers().subscribe((res: { data: any }) => {
-      this.users = res.data;
     });
   }
 
@@ -76,19 +62,14 @@ export class CreateProjectComponent implements OnInit {
   //Adding site details
   addSite() {
     this.sitesService
-      .addSite(
-        this.siteNo,
-        this.siteName,
-        this.siteManagerName,
-        this.location,
-        this.budget
-      )
+      .addSite(this.siteNo, this.siteName, this.location, this.budget)
       .subscribe(
         (response) => {
           console.log(response);
           this.snackbar.open('Site details are successfully added', '', {
             duration: 2000,
           });
+          this.router.navigate(['/dashboard/projects/manage']);
         },
         (err) => {
           this.snackbar.open('Unsuccessful', '', { duration: 2000 });
@@ -101,7 +82,6 @@ export class CreateProjectComponent implements OnInit {
   clear() {
     this.siteNo = '';
     this.siteName = '';
-    this.siteManagerName = '';
     this.location = '';
     this.budget = 0.0;
   }
@@ -111,7 +91,6 @@ export class CreateProjectComponent implements OnInit {
       .updateSiteDetails(this.id, {
         siteNo: this.siteNo,
         siteName: this.siteName,
-        siteManagerName: this.siteManagerName,
         location: this.location,
         budget: this.budget,
       })

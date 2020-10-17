@@ -82,6 +82,7 @@ export class AddStocksComponent implements OnInit {
           this.snackbar.open('Item details are successfully added', '', {
             duration: 2000,
           });
+          this.router.navigate(['/dashboard/items/manage']);
         },
         (err) => {
           this.snackbar.open('Unsuccessful', '', { duration: 2000 });
