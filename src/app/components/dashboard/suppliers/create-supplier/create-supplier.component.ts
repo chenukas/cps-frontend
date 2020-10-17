@@ -78,6 +78,7 @@ export class CreateSupplierComponent implements OnInit {
           this.snackbar.open('Supplier details are successfully added', '', {
             duration: 2000,
           });
+          this.router.navigate(['/dashboard/suppliers/manage']);
         },
         (err) => {
           this.snackbar.open('Unsuccessful', '', { duration: 2000 });

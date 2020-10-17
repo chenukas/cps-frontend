@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequisitionsService } from 'src/app/shared/requsition.service';
+import { SitesService } from 'src/app/shared/sites.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -23,7 +24,7 @@ export class ViewRequisitionComponent implements OnInit {
   public requestDate: string;
   public requireDate: string;
   public supplierName: string;
-  public totalAmount: number;
+  public totalAmount: any;
   public approvedDate: Date;
   public comments: string;
   public status: string;
@@ -31,15 +32,17 @@ export class ViewRequisitionComponent implements OnInit {
   public siteManagerName: string;
   public siteName: string;
   public suppName: string;
-  public budget: Number;
+  public budget: any;
   public siteId: string;
-  public tempBudget: Number;
+  public remainingBudget: any;
+  public site_id: string;
 
   constructor(
     private snackbar: MatSnackBar,
     private router: Router,
     private requisitionService: RequisitionsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sitesService: SitesService
   ) {}
 
   ngOnInit(): void {
@@ -55,7 +58,8 @@ export class ViewRequisitionComponent implements OnInit {
     this.suppName = '';
     this.budget = 0;
     this.siteId = '';
-    this.tempBudget = 0;
+    this.remainingBudget = 0;
+    this.site_id = '';
 
     this.getCurrentRequisition();
   }
@@ -80,6 +84,7 @@ export class ViewRequisitionComponent implements OnInit {
             this.status = res.data.status;
             this.dataSource = new MatTableDataSource(res.data.items);
             this.siteId = res.data.siteId;
+            this.site_id = res.data.siteId._id;
             //console.log(this.items);
           });
       }
@@ -95,9 +100,9 @@ export class ViewRequisitionComponent implements OnInit {
         (response) => {
           console.log(response);
           this.snackbar.open('Requisition is successfully approved', '', {
-            duration: 2000,
+            duration: 1000,
           });
-          this.getCurrentRequisition();
+          this.updateSiteBudget();
         },
         (err) => {
           this.snackbar.open('Unsuccessfull!', '', { duration: 2000 });
@@ -115,12 +120,30 @@ export class ViewRequisitionComponent implements OnInit {
         (response) => {
           console.log(response);
           this.snackbar.open('Requisition is successfully declined', '', {
-            duration: 2000,
+            duration: 1000,
           });
           this.getCurrentRequisition();
         },
         (err) => {
           this.snackbar.open('Unsuccessfull!', '', { duration: 2000 });
+          console.log(err.message);
+        }
+      );
+  }
+
+  updateSiteBudget() {
+    this.remainingBudget = this.budget - this.totalAmount;
+    console.log(this.remainingBudget);
+    this.sitesService
+      .updateBudget(this.site_id, {
+        remainingBudget: this.remainingBudget,
+      })
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.getCurrentRequisition();
+        },
+        (err) => {
           console.log(err.message);
         }
       );

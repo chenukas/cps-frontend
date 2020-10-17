@@ -12,11 +12,10 @@ export class SitesService {
     return this.http.get(`${environment.apiHost}/getSiteNumber`);
   }
 
-  public addSite(siteNo, siteName, siteManagerName, location, budget) {
+  public addSite(siteNo, siteName, location, budget) {
     return this.http.post(`${environment.apiHost}/sites`, {
       siteNo,
       siteName,
-      siteManagerName,
       location,
       budget,
     });
@@ -36,5 +35,9 @@ export class SitesService {
 
   public deleteSiteById(id) {
     return this.http.delete(`${environment.apiHost}/sites/${id}`);
+  }
+
+  public updateBudget(id: string, site) {
+    return this.http.put(`${environment.apiHost}/sites/${id}/budget`, site);
   }
 }

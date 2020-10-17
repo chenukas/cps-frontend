@@ -17,25 +17,19 @@ interface APIResponse {
   styleUrls: ['./manage-project.component.css'],
 })
 export class ManageProjectComponent implements OnInit {
-  displayedColumns = [
-    'siteNo',
-    'siteName',
-    'location',
-    'sitemgr',
-    'budget',
-    'action',
-  ];
+  displayedColumns = ['siteNo', 'siteName', 'location', 'budget', 'action'];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   public siteNo: string;
   public siteName: string;
-  public siteManagerName: string;
   public location: string;
   public budget: number;
   public _id: string;
   public sites: [];
+  public siteNames: any;
+  public budgets: [];
 
   constructor(
     private siteService: SitesService,
@@ -45,9 +39,6 @@ export class ManageProjectComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //this._id = '';
-    //this.siteNo ='';
-    //this.siteName = '';
     this.viewAllSites();
   }
 
