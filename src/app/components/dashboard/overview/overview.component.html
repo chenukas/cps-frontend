@@ -28,4 +28,32 @@
       </mat-card-content>
     </mat-card>
   </div>
+  <div class="col-md-6">
+    <mat-card class="chart-card" style="margin-right: 46px">
+      <mat-card-header>
+        <mat-card-title>Available Budgets</mat-card-title>
+        <mat-card-subtitle
+          >Available Budgets are filtered by Projects/Sites</mat-card-subtitle
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="chart-wrapper">
+              <canvas
+                baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+              >
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
