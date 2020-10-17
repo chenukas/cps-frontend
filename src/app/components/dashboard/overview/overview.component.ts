@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartType, ChartOptions } from 'chart.js';
+import { ChartType, ChartOptions, ChartDataSets } from 'chart.js';
 import {
   SingleDataSet,
   Label,
@@ -7,6 +7,7 @@ import {
   monkeyPatchChartJsTooltip,
 } from 'ng2-charts';
 import { StatisticsService } from 'src/app/shared/statistics.service';
+import { SitesService } from 'src/app/shared/sites.service';
 
 interface APIResponse {
   success: boolean;
@@ -19,6 +20,9 @@ interface APIResponse {
   styleUrls: ['./overview.component.css'],
 })
 export class OverviewComponent implements OnInit {
+  public siteNames: string[];
+  public budgets: any[];
+
   public isLoadingPieChart: boolean;
 
   public requisitionsCounts: any;
@@ -40,12 +44,17 @@ export class OverviewComponent implements OnInit {
     },
   ];
 
-  constructor(private statisticsService: StatisticsService) {
+  constructor(
+    private statisticsService: StatisticsService,
+    private siteService: SitesService
+  ) {
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
   }
 
   ngOnInit(): void {
+    this.siteNames = new Array<string>();
+    this.budgets = new Array<Number>();
     this.requisitionsCounts = [];
 
     this.statisticsService
@@ -61,5 +70,20 @@ export class OverviewComponent implements OnInit {
 
         this.pieChartData = this.requisitionsCounts;
       });
+
+    this.siteService.viewSites().subscribe((res: APIResponse) => {
+      //console.log(res.data);
+      for (let i = 0; i < res.data.length; i++) {
+        this.siteNames.push(res.data[i].siteName);
+      }
+      console.log(this.siteNames);
+
+      for (let i = 0; i < res.data.length; i++) {
+        this.budgets.push(res.data[i].budget);
+      }
+      console.log(this.budgets);
+      //this.barChartLabels = this.siteNames;
+      //this.barChartData = this.budgets;
+    });
   }
 }
