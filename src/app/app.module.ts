@@ -46,6 +46,8 @@ import {
 } from './components/dashboard/stocks/manage-stocks/manage-stocks.component';
 import { ViewRequisitionComponent } from './components/dashboard/requisitions/view-requisition/view-requisition.component';
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   entryComponents: [
     DialogBoxUserDel,
@@ -89,6 +91,7 @@ import { ViewRequisitionComponent } from './components/dashboard/requisitions/vi
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule,
+    ChartsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

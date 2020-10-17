@@ -31,6 +31,7 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
     children: [
+      { path: '', pathMatch: 'full', redirectTo: 'overview' },
       { path: 'overview', component: OverviewComponent },
       {
         path: 'requisitions',

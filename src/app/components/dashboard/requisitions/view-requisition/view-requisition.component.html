@@ -14,7 +14,7 @@
   <strong>{{ this.suppName }}</strong>
 </h4>
 <br />
-<div style="width: 50%; text-align: center">
+<div style="width: 100%; text-align: center">
   <h5>List of Items</h5>
 </div>
 
@@ -40,7 +40,9 @@
     </ng-container>
 
     <ng-container matColumnDef="unitPrice">
-      <th mat-header-cell *matHeaderCellDef>Unit Price</th>
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">
+        Unit Price
+      </th>
       <td mat-cell *matCellDef="let item" style="text-align: right">
         {{ item.productId.unitPrice | currency: "LKR" }}
       </td>
@@ -60,7 +62,7 @@
   </table>
 </div>
 <br />
-<div style="width: 50%">
+<div style="width: 100%">
   <h5 style="text-align: right; margin-right: 20px">
     <strong>Total</strong>
     {{ this.totalAmount | currency: "LKR" }}
@@ -71,4 +73,82 @@
   </h5>
 
   <p><strong>Status </strong>{{ this.status }}</p>
+</div>
+
+<div>
+  <form>
+    <div class="content">
+      <div
+        class="form-row"
+        *ngIf="this.status == 'Approved' || this.status == 'Pending'"
+      >
+        <div class="col-md-12 col-sm-12">
+          <mat-form-field appearance="outline" class="lwidth">
+            <mat-label>Comments</mat-label>
+            <input
+              matInput
+              placeholder="Enter the comments here"
+              name="comments"
+              [(ngModel)]="comments"
+              required
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row" *ngIf="this.status == 'Declined'">
+        <div class="col-md-12 col-sm-12">
+          <mat-form-field appearance="outline" class="lwidth">
+            <mat-label>Comments</mat-label>
+            <input
+              matInput
+              placeholder="Enter the comments here"
+              name="comments"
+              [(ngModel)]="comments"
+              disabled
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <button
+      *ngIf="this.status == 'Pending'"
+      mat-raised-button
+      style="
+        background-color: #1fdb48;
+        color: white;
+        float: right;
+        margin-right: 20px;
+      "
+      (click)="approveRequisition()"
+    >
+      Approve
+    </button>
+    <button
+      *ngIf="this.status == 'Approved' || this.status == 'Pending'"
+      mat-raised-button
+      style="
+        background-color: red;
+        color: white;
+        float: right;
+        margin-right: 20px;
+      "
+      (click)="declineRequisition()"
+    >
+      Decline
+    </button>
+    <button
+      *ngIf="this.status == 'Declined'"
+      mat-raised-button
+      style="
+        background-color: red;
+        color: white;
+        float: right;
+        margin-right: 20px;
+      "
+      (click)="declineRequisition()"
+      disabled
+    >
+      Declined
+    </button>
+  </form>
 </div>

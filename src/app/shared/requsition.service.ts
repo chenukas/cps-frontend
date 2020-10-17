@@ -18,7 +18,14 @@ export class RequisitionsService {
 
   public approveRequisitionById(id: string, requisition) {
     return this.http.put(
-      `${environment.apiHost}/requisitions/${id}`,
+      `${environment.apiHost}/requisitions/${id}/approve`,
+      requisition
+    );
+  }
+
+  public declineRequisitionById(id: string, requisition) {
+    return this.http.put(
+      `${environment.apiHost}/requisitions/${id}/decline`,
       requisition
     );
   }
