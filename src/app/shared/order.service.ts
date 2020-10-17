@@ -24,6 +24,6 @@ export class OrderService {
   }
 
   public viewDeliveredOrders() {
-    return this.http.get(`${environment.apiHost}/orders/status`);
+    return this.http.get(`${environment.apiHost}/orders/status/Delivered`);
   }
 }
