@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ManageRequisitionComponent } from './manage-requisition.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ManageRequisitionComponent', () => {
   let component: ManageRequisitionComponent;
@@ -8,9 +12,14 @@ describe('ManageRequisitionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManageRequisitionComponent ]
-    })
-    .compileComponents();
+      declarations: [ManageRequisitionComponent],
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule,
+        MatDialogModule,
+        MatSnackBarModule,
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
