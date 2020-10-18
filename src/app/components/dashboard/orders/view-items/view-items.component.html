@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Order ID: {{data.order.orderID}}</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p>Items</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <ol style="list-style-type:lower-alpha">
+                <li *ngFor="let item of data.order.requisitionID.items; let i = index;">
+                    <span *ngIf="item.productId && item.quantity">{{i+1}}) {{item.productId.itemName}} - <small>Qty. </small>{{item.quantity}} x <small>LKR</small> {{item.productId.unitPrice}}  =  <b>LKR {{item.quantity * item.productId.unitPrice}}</b></span>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>

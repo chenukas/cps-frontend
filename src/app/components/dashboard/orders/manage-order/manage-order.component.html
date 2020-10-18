@@ -47,6 +47,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef><b>Actions</b></th>
       <td mat-cell *matCellDef="let orders">
+        <button mat-flat-button color="primary" style="margin-right: 5px;" (click)="viewItems(orders)">View Items</button>
         <button mat-stroked-button color="primary" (click)="openDialog(orders._id, orders.orderID)">Mark as Delivered</button>
       </td>
     </ng-container>
