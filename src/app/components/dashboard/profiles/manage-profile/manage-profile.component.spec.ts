@@ -2,15 +2,25 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ManageProfileComponent } from './manage-profile.component';
 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+
 describe('ManageProfileComponent', () => {
   let component: ManageProfileComponent;
   let fixture: ComponentFixture<ManageProfileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManageProfileComponent ]
-    })
-    .compileComponents();
+      declarations: [ManageProfileComponent],
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule,
+        MatSnackBarModule,
+        MatDialogModule,
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CreateSupplierComponent } from './create-supplier.component';
 
 describe('CreateSupplierComponent', () => {
@@ -8,9 +10,13 @@ describe('CreateSupplierComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateSupplierComponent ]
-    })
-    .compileComponents();
+      declarations: [CreateSupplierComponent],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        MatSnackBarModule,
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
