@@ -37,6 +37,7 @@ export class CreateSupplierComponent implements OnInit {
     this.supEmail = '';
     this.supTel = '';
 
+    //access respective data using query parameter
     this.route.queryParams.subscribe((params) => {
       if (params.id) {
         this.supplierService
@@ -57,12 +58,14 @@ export class CreateSupplierComponent implements OnInit {
     });
   }
 
+  //method to assign next supplier number
   generateNextSupNo() {
     this.supplierService.getNextSupNo().subscribe((res: { data: any }) => {
       this.supId = res.data;
     });
   }
 
+  //method to create new supplier
   addSupplier() {
     this.supplierService
       .addSupplier(
@@ -88,6 +91,7 @@ export class CreateSupplierComponent implements OnInit {
     this.clear();
   }
 
+  //method to clear input fields
   clear() {
     this.supId = '';
     this.supName = '';
@@ -96,6 +100,7 @@ export class CreateSupplierComponent implements OnInit {
     this.supTel = '';
   }
 
+  //method to update supplier details
   updateSupplierDetails() {
     this.supplierService
       .updateSupplierDetails(this.id, {

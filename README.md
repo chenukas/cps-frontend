@@ -31,6 +31,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 User Types,
 
 - Management - 0
-- Procurement Staff - 1
-- Accounting Staff - 2
-- Site Manager - 3
+- Accounting/Procurement Staff - 1
+- Site Manager - 2

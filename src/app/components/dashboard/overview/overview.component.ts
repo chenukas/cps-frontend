@@ -25,6 +25,7 @@ export class OverviewComponent implements OnInit {
 
   public isLoadingPieChart: boolean;
 
+  //pie chart initialization
   public requisitionsCounts: any;
   public approvedReqCount: any;
   public declinedReqCount: any;
@@ -44,6 +45,7 @@ export class OverviewComponent implements OnInit {
     },
   ];
 
+  //bar chart initialization
   public myChart;
   public labels;
   public values;
@@ -71,6 +73,7 @@ export class OverviewComponent implements OnInit {
     monkeyPatchChartJsLegend();
   }
 
+  //method to load all details for charts
   ngOnInit(): void {
     this.siteNames = new Array<string>();
     this.budgets = new Array<Number>();

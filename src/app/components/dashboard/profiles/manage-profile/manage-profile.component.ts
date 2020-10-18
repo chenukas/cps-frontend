@@ -25,6 +25,7 @@ export class ManageProfileComponent implements OnInit {
     this.viewAllUsers();
   }
 
+  //method to view all users
   viewAllUsers() {
     this.userService.getAllUsers().subscribe(
       (res: any) => {
@@ -36,6 +37,7 @@ export class ManageProfileComponent implements OnInit {
     );
   }
 
+  //method to delete user profile
   public delete(_id: string) {
     this.userService.deleteUserById(_id).subscribe(
       (res) => {
@@ -64,6 +66,7 @@ export class ManageProfileComponent implements OnInit {
     });
   }
 
+  //method to navigate to create profile interface
   navigateCreate() {
     this.router.navigate(['dashboard/profiles/create']);
   }
