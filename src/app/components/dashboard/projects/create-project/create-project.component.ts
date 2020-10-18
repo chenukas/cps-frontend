@@ -53,6 +53,7 @@ export class CreateProjectComponent implements OnInit {
     });
   }
 
+  //auto-generate next site number
   generateNextSiteNo() {
     this.sitesService.getNextSiteNo().subscribe((res: { data: any }) => {
       this.siteNo = res.data;
@@ -86,6 +87,7 @@ export class CreateProjectComponent implements OnInit {
     this.budget = 0.0;
   }
 
+  //updating site details
   updateSiteDetails() {
     this.sitesService
       .updateSiteDetails(this.id, {

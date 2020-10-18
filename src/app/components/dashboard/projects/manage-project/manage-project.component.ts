@@ -39,6 +39,7 @@ export class ManageProjectComponent implements OnInit {
     this.viewAllSites();
   }
 
+  //view all sites
   viewAllSites() {
     this.siteService.viewSites().subscribe((res: APIResponse) => {
       this.dataSource = new MatTableDataSource(res.data);
@@ -47,10 +48,12 @@ export class ManageProjectComponent implements OnInit {
     });
   }
 
+  //navigate to add site page
   addSite() {
     this.router.navigate(['dashboard/projects/create']);
   }
 
+  //open dialog box to confirm delete
   openDialog(_id: string) {
     const dialogRef = this.dialog.open(DialogBoxSiteDel);
 
@@ -61,6 +64,7 @@ export class ManageProjectComponent implements OnInit {
     });
   }
 
+  //deleting site details
   public deleteSiteDetails(_id: String) {
     this.siteService.deleteSiteById(_id).subscribe(
       (response) => {
@@ -79,6 +83,7 @@ export class ManageProjectComponent implements OnInit {
     );
   }
 
+  //navigate to update site details page
   updateSiteDetails(id: String) {
     this.router.navigate(['dashboard/projects/create'], {
       queryParams: { id },
