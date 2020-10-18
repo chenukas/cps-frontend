@@ -6,6 +6,8 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { EventEmitter } from 'protractor';
+import { ViewItemsComponent } from '../view-items/view-items.component';
+import { environment } from 'src/environments/environment';
 // import { APIResponse } from 'src/app/models/apiresponse';
 
 @Component({
@@ -50,6 +52,13 @@ export class ManageOrderComponent implements OnInit {
   // applyFilter(keyword) {
   //   this.dataSource.filter = keyword.trim().toLowerCase();
   // }
+
+  viewItems(order) {
+    const dialogRef = this.dialog.open(ViewItemsComponent, {
+      data: { order },
+      width: '600px',
+    });
+  }
 
   viewOrder(page: number, limit: number) {
     this.isLoading = true;

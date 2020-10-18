@@ -47,6 +47,7 @@ import {
 import { ViewRequisitionComponent } from './components/dashboard/requisitions/view-requisition/view-requisition.component';
 
 import { ChartsModule } from 'ng2-charts';
+import { ViewItemsComponent } from './components/dashboard/orders/view-items/view-items.component';
 
 @NgModule({
   entryComponents: [
@@ -83,7 +84,8 @@ import { ChartsModule } from 'ng2-charts';
     ManageStocksComponent,
     DialogBoxStockDel,
     ViewRequisitionComponent,
-    DialogBox
+    DialogBox,
+    ViewItemsComponent
   ],
   imports: [
     BrowserModule,

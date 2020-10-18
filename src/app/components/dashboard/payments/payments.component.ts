@@ -6,6 +6,7 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { EventEmitter } from 'protractor';
+import { environment } from 'src/environments/environment';
 // import { APIResponse } from 'src/app/models/apiresponse';;
 
 @Component({
@@ -36,6 +37,10 @@ export class PaymentsComponent implements OnInit {
   ngOnInit() {
     this.filters = { limit: 5, page: 0 };
     this.viewDeliveredOrders(this.filters.page, this.filters.limit);
+  }
+
+  openInvoice(id) {
+    window.open(environment.apiHost + '/orders/' + id + '/invoice', '_blank');
   }
 
   changePage($event) {
