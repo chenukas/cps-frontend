@@ -50,10 +50,9 @@ export class ManageOrderComponent implements OnInit {
   }
 
   //search
-
-  // applyFilter(keyword) {
-  //   this.dataSource.filter = keyword.trim().toLowerCase();
-  // }
+  applyFilter(keyword) {
+    this.dataSource.filter = keyword.trim().toLowerCase();
+  }
 
   viewItems(order) {
     const dialogRef = this.dialog.open(ViewItemsComponent, {
@@ -62,6 +61,7 @@ export class ManageOrderComponent implements OnInit {
     });
   }
 
+  //get all the ordersin the system
   viewOrder(page: number, limit: number) {
     this.isLoading = true;
     this.orderService.viewOrder().subscribe(
@@ -72,7 +72,7 @@ export class ManageOrderComponent implements OnInit {
         this.dataIsLoaded = true;
         this.order = res.data;
         this.isLoading = false;
-      this.dataSource.paginator = this.paginator;
+        this.dataSource.paginator = this.paginator;
 
       },
       (err) => {
@@ -94,6 +94,7 @@ export class ManageOrderComponent implements OnInit {
     });
   }
 
+  //change state to delivered
   public changeState(_id: string) {
     this.orderService.changeOrderState(_id).subscribe(
       (res) => {
@@ -112,6 +113,7 @@ export class ManageOrderComponent implements OnInit {
 
 }
 
+//dialog box
 @Component({
   selector: "dialogBox",
   templateUrl: "dialogBox.html",
@@ -122,5 +124,5 @@ export class DialogBox {
     public data: { _id: string; orderID: string; }
   ) { }
 
-  public unenroll() { }
+  public changeState() { }
 }

@@ -41,10 +41,12 @@ export class PaymentsComponent implements OnInit {
     this.viewDeliveredOrders(this.filters.page, this.filters.limit);
   }
 
+  //path to invoice route
   openInvoice(id) {
     window.open(environment.apiHost + '/orders/' + id + '/invoice', '_blank');
   }
 
+  //paginator page limits
   changePage($event) {
     this.filters = {
       page: $event.pageIndex,
@@ -53,6 +55,7 @@ export class PaymentsComponent implements OnInit {
     this.viewDeliveredOrders($event.pageIndex, $event.pageSize);
   }
 
+  //get all delivered goods
   viewDeliveredOrders(page: number, limit: number) {
     this.isLoading = true;
     this.orderService.viewDeliveredOrders().subscribe(
@@ -63,7 +66,7 @@ export class PaymentsComponent implements OnInit {
         this.dataIsLoaded = true;
         this.order = res.data;
         this.isLoading = false;
-      this.dataSource.paginator = this.paginator;
+        this.dataSource.paginator = this.paginator;
       },
       (err) => {
         console.log(err.message);
