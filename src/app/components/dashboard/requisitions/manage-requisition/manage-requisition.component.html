@@ -8,6 +8,7 @@
     class="mat-elevation-z8"
     style="border-radius: 50px"
   >
+    //Requisition number
     <ng-container matColumnDef="requisitionID">
       <th mat-header-cell *matHeaderCellDef>Requisition No.</th>
       <td mat-cell *matCellDef="let requisition">
@@ -15,6 +16,7 @@
       </td>
     </ng-container>
 
+    //Site name and site manager number
     <ng-container matColumnDef="siteId">
       <th mat-header-cell *matHeaderCellDef>Site & Site Manager</th>
       <td mat-cell *matCellDef="let requisition">
@@ -23,6 +25,7 @@
       </td>
     </ng-container>
 
+    //Request date
     <ng-container matColumnDef="requestDate">
       <th mat-header-cell *matHeaderCellDef>Requested Date</th>
       <td mat-cell *matCellDef="let requisition">
@@ -30,6 +33,7 @@
       </td>
     </ng-container>
 
+    //Total value
     <ng-container matColumnDef="totalAmount">
       <th mat-header-cell *matHeaderCellDef style="text-align: center">
         Total Value
@@ -39,6 +43,7 @@
       </td>
     </ng-container>
 
+    //Status
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef style="text-align: center">
         Status
@@ -54,6 +59,7 @@
       </td>
     </ng-container>
 
+    //Approved date
     <ng-container matColumnDef="approvedDate">
       <th mat-header-cell *matHeaderCellDef>Approved Date</th>
       <td mat-cell *matCellDef="let requisition">
@@ -61,6 +67,7 @@
       </td>
     </ng-container>
 
+    //Action
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef style="text-align: center">
         Action

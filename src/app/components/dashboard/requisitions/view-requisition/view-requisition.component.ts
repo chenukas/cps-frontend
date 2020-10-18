@@ -64,6 +64,7 @@ export class ViewRequisitionComponent implements OnInit {
     this.getCurrentRequisition();
   }
 
+  //Function to get all requisitions
   getCurrentRequisition() {
     this.route.queryParams.subscribe((params) => {
       if (params.id) {
@@ -91,6 +92,7 @@ export class ViewRequisitionComponent implements OnInit {
     });
   }
 
+  //Function to approve requisitions
   approveRequisition() {
     this.requisitionService
       .approveRequisitionById(this.id, {
@@ -111,6 +113,7 @@ export class ViewRequisitionComponent implements OnInit {
       );
   }
 
+  //Function to decline requisition
   declineRequisition() {
     this.requisitionService
       .declineRequisitionById(this.id, {
@@ -131,6 +134,7 @@ export class ViewRequisitionComponent implements OnInit {
       );
   }
 
+  //Function to update site budget
   updateSiteBudget() {
     this.remainingBudget = this.budget - this.totalAmount;
     console.log(this.remainingBudget);

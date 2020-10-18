@@ -53,6 +53,7 @@ export class ManageRequisitionComponent implements OnInit {
     this.viewAllRequisitions();
   }
 
+  //Function to view all requisitions
   viewAllRequisitions() {
     this.requisitionService.viewRequisitions().subscribe((res: APIResponse) => {
       this.dataSource = new MatTableDataSource(res.data);
@@ -60,6 +61,7 @@ export class ManageRequisitionComponent implements OnInit {
     });
   }
 
+  //Function to view requisitions by ID
   viewRequisitionById(id: string) {
     this.router.navigate(['dashboard/requisitions/view'], {
       queryParams: { id },
