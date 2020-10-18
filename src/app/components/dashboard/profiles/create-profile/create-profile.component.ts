@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-profile.component.css'],
 })
 export class CreateProfileComponent implements OnInit {
+  //pattern to validate email
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   showSucessMessage: boolean;
   public sites: [];
@@ -26,6 +27,7 @@ export class CreateProfileComponent implements OnInit {
     this.loadSitesList();
   }
 
+  //method to load all sites for site managers
   loadSitesList() {
     this.sitesService.viewSites().subscribe((res: { data: any }) => {
       this.sites = res.data;
@@ -33,6 +35,7 @@ export class CreateProfileComponent implements OnInit {
     });
   }
 
+  //method to submit registration form
   onSubmit(form: NgForm) {
     this.userService.postUser(form.value).subscribe(
       (res) => {
@@ -57,6 +60,7 @@ export class CreateProfileComponent implements OnInit {
     );
   }
 
+  //method to reset form
   resetForm(form: NgForm) {
     this.userService.selectedUser = {
       fullName: '',

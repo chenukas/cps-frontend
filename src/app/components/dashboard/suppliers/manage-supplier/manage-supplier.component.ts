@@ -48,6 +48,7 @@ export class ManageSupplierComponent implements OnInit {
     this.viewAllSuppliers();
   }
 
+  //method to view all suppliers
   viewAllSuppliers() {
     this.supplierService.viewSuppliers().subscribe((res: APIResponse) => {
       this.dataSource = new MatTableDataSource(res.data);
@@ -55,6 +56,7 @@ export class ManageSupplierComponent implements OnInit {
     });
   }
 
+  //method to add supplier
   addSupplier() {
     this.router.navigate(['dashboard/suppliers/create']);
   }
@@ -69,6 +71,7 @@ export class ManageSupplierComponent implements OnInit {
     });
   }
 
+  //method to delete supplier
   public deleteSupDetails(_id: String) {
     this.supplierService.deleteSupplierById(_id).subscribe(
       (response) => {
@@ -87,6 +90,7 @@ export class ManageSupplierComponent implements OnInit {
     );
   }
 
+  //method to pass query parameter to create page and get respective data
   updateSupDetails(id: String) {
     this.router.navigate(['dashboard/suppliers/create'], {
       queryParams: { id },

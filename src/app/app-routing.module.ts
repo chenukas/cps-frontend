@@ -24,6 +24,7 @@ import { ViewRequisitionComponent } from './components/dashboard/requisitions/vi
 import { AuthGuard } from './auth/auth.guard';
 import { ManageOrderComponent } from './components/dashboard/orders/manage-order/manage-order.component';
 
+//Initialize all the navigation routes
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },

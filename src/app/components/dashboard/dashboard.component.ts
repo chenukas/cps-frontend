@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   userDetails;
   constructor(private userService: UserService, private router: Router) {}
 
+  //access logged in user details
   ngOnInit(): void {
     this.displayName = '';
     this.userService.getUserProfile().subscribe(
@@ -33,6 +34,7 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  //logout method
   onLogout() {
     this.userService.deleteToken();
     this.router.navigate(['/login']);

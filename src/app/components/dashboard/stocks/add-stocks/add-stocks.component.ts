@@ -42,6 +42,7 @@ export class AddStocksComponent implements OnInit {
 
     this.loadSuppliersList();
 
+    //get item details using query parameter and assign to input fields
     this.route.queryParams.subscribe((params) => {
       if (params.id) {
         this.stocksService
@@ -60,6 +61,7 @@ export class AddStocksComponent implements OnInit {
     });
   }
 
+  //method to load suppliers list
   loadSuppliersList() {
     this.supplierService.viewSuppliers().subscribe((res: { data: any }) => {
       this.supps = res.data;
@@ -67,6 +69,7 @@ export class AddStocksComponent implements OnInit {
     });
   }
 
+  //method to add new item to the system
   addItem() {
     this.stocksService
       .addItem(
@@ -93,6 +96,7 @@ export class AddStocksComponent implements OnInit {
     this.clear();
   }
 
+  //method to clear input fields
   clear() {
     this.itemName = '';
     this.description = '';
@@ -101,6 +105,7 @@ export class AddStocksComponent implements OnInit {
     this.unitPrice = 0.0;
   }
 
+  //method to update item
   updateItem() {
     this.stocksService
       .updateItemById(this.id, {

@@ -21,8 +21,8 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  //HttpMethods
-
+  //http requests
+  //register user to the system
   postUser(user: User) {
     return this.http.post(
       environment.apiHost + '/register',
@@ -31,6 +31,7 @@ export class UserService {
     );
   }
 
+  //authenticate user when logged in
   login(authCredentials) {
     return this.http.post(
       environment.apiHost + '/authenticate',
@@ -39,36 +40,43 @@ export class UserService {
     );
   }
 
+  //get details of logged in user
   getUserProfile() {
     return this.http.get(environment.apiHost + '/userProfile');
   }
 
+  //get all details of users
   getAllUsers() {
     return this.http.get(environment.apiHost + '/users');
   }
 
+  //get list of site managers
   getSiteManagers() {
     return this.http.get(environment.apiHost + '/sitemanagers');
   }
 
+  //remove users from the system by Id
   deleteUserById(id: string) {
     return this.http.delete(environment.apiHost + '/users/' + id);
   }
 
-  //Helper Methods
-
+  //helper methods
+  //save auth token to browser
   setToken(token: string) {
     localStorage.setItem('token', token);
   }
 
+  //access auth token when doing http requests
   getToken() {
     return localStorage.getItem('token');
   }
 
+  //remove saved auth token
   deleteToken() {
     localStorage.removeItem('token');
   }
 
+  //decode the user token
   getUserPayload() {
     var token = this.getToken();
     if (token) {
@@ -77,6 +85,7 @@ export class UserService {
     } else return null;
   }
 
+  //checking whether there is valid auth token
   isLoggedIn() {
     var userPayload = this.getUserPayload();
     if (userPayload) return userPayload.exp > Date.now() / 1000;

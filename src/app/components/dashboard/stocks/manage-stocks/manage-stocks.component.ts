@@ -48,6 +48,7 @@ export class ManageStocksComponent implements OnInit {
     this.viewAllItems();
   }
 
+  //method to view all items
   viewAllItems() {
     this.stocksService.viewItems().subscribe((res: APIResponse) => {
       this.dataSource = new MatTableDataSource(res.data);
@@ -55,6 +56,7 @@ export class ManageStocksComponent implements OnInit {
     });
   }
 
+  //method to navigate to create item interface
   addItem() {
     this.router.navigate(['dashboard/items/add']);
   }
@@ -69,6 +71,7 @@ export class ManageStocksComponent implements OnInit {
     });
   }
 
+  //method to delete an item
   public deleteItem(_id: String) {
     this.stocksService.deleteItemById(_id).subscribe(
       (response) => {
@@ -87,6 +90,7 @@ export class ManageStocksComponent implements OnInit {
     );
   }
 
+  //method to navigate to create item interface for updation
   updateItem(id: String) {
     this.router.navigate(['dashboard/items/add'], {
       queryParams: { id },

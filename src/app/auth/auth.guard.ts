@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
+
+/*This class secure the login, if registered user not found/wrong URL,
+automatically redirected to /login */
 export class AuthGuard implements CanActivate {
   constructor(private userService: UserService, private router: Router) {}
 

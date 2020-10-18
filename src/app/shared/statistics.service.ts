@@ -8,6 +8,8 @@ import { environment } from '../../environments/environment';
 export class StatisticsService {
   constructor(private http: HttpClient) {}
 
+  //http requests
+  //get request to get requisition status by Id
   getRequisitionsByStatus() {
     return this.http.get(`${environment.apiHost}/statistics/reqbystatus`);
   }
