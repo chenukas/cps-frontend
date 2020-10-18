@@ -20,6 +20,8 @@ export class PaymentsComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   order;
   dataIsLoaded = false;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
   private filters: {
     limit: number,
     page: number
@@ -61,6 +63,7 @@ export class PaymentsComponent implements OnInit {
         this.dataIsLoaded = true;
         this.order = res.data;
         this.isLoading = false;
+      this.dataSource.paginator = this.paginator;
       },
       (err) => {
         console.log(err.message);
