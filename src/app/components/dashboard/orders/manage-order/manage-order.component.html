@@ -1,5 +1,14 @@
 <h2 class="topic">Purchase Orders</h2>
 <br />
+<div class="container-fluid">
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Serch order" />
+    </mat-form-field>
+
+  </div>
+</div>
 
 <div class="list mat-elevation-z8">
   <app-loader *ngIf="isLoading"></app-loader>
@@ -31,15 +40,15 @@
     <!-- total Column -->
     <ng-container matColumnDef="total">
       <th mat-header-cell *matHeaderCellDef><b> Total </b></th>
-      <td mat-cell *matCellDef="let orders">{{ orders.requisitionID && orders.requisitionID.totalAmount | currency: 'LKR ' }}</td>
+      <td mat-cell *matCellDef="let orders">
+        {{ orders.requisitionID && orders.requisitionID.totalAmount | currency: 'LKR ' }}</td>
     </ng-container>
 
     <!-- Action Column -->
     <ng-container matColumnDef="state">
       <th mat-header-cell *matHeaderCellDef><b>Status</b></th>
       <td mat-cell *matCellDef="let orders">
-        <span class="badge" 
-          [class.badge-primary]="orders.status !== 'Delivered'" 
+        <span class="badge" [class.badge-primary]="orders.status !== 'Delivered'"
           [class.badge-success]="orders.status === 'Delivered'">{{orders.status | titlecase}}</span>
       </td>
     </ng-container>
@@ -47,8 +56,10 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef><b>Actions</b></th>
       <td mat-cell *matCellDef="let orders">
-        <button mat-raised-button style="color: #783357;" style="margin-right: 5px;" (click)="viewItems(orders)">View Items</button>
-        <button mat-raised-button style="color: #783357;" (click)="openDialog(orders._id, orders.orderID)">Mark as Delivered</button>
+        <button mat-raised-button style="color: #783357;" style="margin-right: 5px;" (click)="viewItems(orders)">View
+          Items</button>
+        <button mat-raised-button style="color: #783357;" (click)="openDialog(orders._id, orders.orderID)">Mark as
+          Delivered</button>
       </td>
     </ng-container>
 

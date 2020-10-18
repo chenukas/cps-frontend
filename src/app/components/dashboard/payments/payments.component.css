@@ -1,4 +1,4 @@
-table {
+  table {
     width: 100%;
   }
 
@@ -15,14 +15,14 @@ table {
     background: #ffffff;
     border-radius: 10px;
     padding: 10px;
-}
+  }
 
-.topic{
-  font-family: "Poppins", sans-serif;
-  color: #852d59;
-  text-align: left;
-}
+  .topic{
+    font-family: "Poppins", sans-serif;
+    color: #852d59;
+    text-align: left;
+  }
 
-.paginate{
-  border-radius: 10px;
-}
+  .paginate{
+    border-radius: 10px;
+  }
